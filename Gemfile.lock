@@ -1,14 +1,18 @@
-GEM
-  remote: https://rubygems.org/
+PATH
+  remote: .
   specs:
-    addressable (2.7.0)
-      public_suffix (>= 2.0.2, < 5.0)
     beautiful-jekyll-theme (5.0.0)
       jekyll (~> 3.8)
       jekyll-paginate (~> 1.1)
       jekyll-sitemap (~> 1.4)
       kramdown (~> 2.3.0)
       kramdown-parser-gfm (~> 1.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     colorator (1.1.0)
     concurrent-ruby (1.1.8)
     em-websocket (0.5.2)
@@ -33,8 +37,6 @@ GEM
       pathutil (~> 0.9)
       rouge (>= 1.7, < 4)
       safe_yaml (~> 1.0)
-    jekyll-feed (0.15.1)
-      jekyll (>= 3.7, < 5.0)
     jekyll-paginate (1.1.0)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
@@ -54,6 +56,7 @@ GEM
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (4.0.6)
+    rake (12.3.3)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -70,12 +73,9 @@ PLATFORMS
   x86_64-darwin-19
 
 DEPENDENCIES
-  beautiful-jekyll-theme (= 5.0.0)
-  jekyll (~> 3.8)
-  jekyll-feed (~> 0.12)
-  tzinfo (~> 1.2)
-  tzinfo-data
-  wdm (~> 0.1.1)
+  beautiful-jekyll-theme!
+  bundler (>= 1.16)
+  rake (~> 12.0)
 
 BUNDLED WITH
    2.2.7
