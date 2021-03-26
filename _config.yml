@@ -23,7 +23,7 @@ email: zhuyech@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   分享在东京生活的省钱技巧
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://izyc.me/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://izyc.me" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: yussica0309
 # github_username:  yussica
 
