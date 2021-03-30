@@ -39,8 +39,8 @@ plugins:
 # --- List of links in the navigation bar --- #
 
 navbar-links:
+  开户邀请: "invitation"
   关于: "about"
-  邀请: "invitation"
   # Resources:
   #   - Beautiful Jekyll: "https://beautifuljekyll.com"
   #   - Learn markdown: "https://www.markdowntutorial.com/"

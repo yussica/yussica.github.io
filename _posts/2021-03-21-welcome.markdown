@@ -5,37 +5,25 @@ date:   2021-03-21 22:58:16 +0900
 last_modified_at: 2021-03-30 17:58:05.415 +0900
 categories: Welcome
 top: true
+tags: [活动]
 ---
 欢迎访问东京都节约频道，这里我们将分享关于在东京都生活如何省钱的小技巧。
 
-活动日历 ( [iOS])
+热门活动
 
+|  消费地点  | 截止时间 | 内容 |
+| :----- | :----- | :----- |
+| [便利店](https://www.jcb.co.jp/campaign/z03_convenience2103.html) | 5月31日 | JCB卡使用ApplePay或者GooglePay支付可返20%现金，需要在JCB网站注册之后才能返 |
+| 西友 | 3月31日 | RPay最高5% |
+
+
+今日活动日历如下： ( [iOS])
 {% include googlecalendar.html %}
 
+参考<br />
+[常设活动]{:target="_blank"} [开户邀请](/invitation){:target="_blank"} [东京物价参考](https://docs.google.com/spreadsheets/d/1sqomoAxb6Ka-3Dwnr2MUsAorsqv5EQHFlGjt8Edo-nE/edit?usp=sharing){:target="_blank"}
 
-[每月免费领积分]
 
 
-Jekyll requires blog post files to be named according to the following format:
-
-`YEAR-MONTH-DAY-title.MARKUP`
-
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
-
-Jekyll also offers powerful support for code snippets:
-
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
 [iOS]: https://calendar.google.com/calendar/ical/2ad569p1pj82gmtjjj4d7ai2mo%40group.calendar.google.com/public/basic.ics
 [每月免费领积分]: /monthly-points

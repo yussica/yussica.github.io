@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 每月领积分
+title: 常设活动
 permalink: /monthly-points
 css: /assets/css/style.css
 full-width: true
