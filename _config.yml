@@ -40,6 +40,7 @@ plugins:
 
 navbar-links:
   关于: "about"
+  邀请: "invitation"
   # Resources:
   #   - Beautiful Jekyll: "https://beautifuljekyll.com"
   #   - Learn markdown: "https://www.markdowntutorial.com/"
