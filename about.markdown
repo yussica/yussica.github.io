@@ -1,18 +1,19 @@
 ---
 layout: page
-title: About
+title: 关于
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+欢迎光临东京省钱频道（東京節約チャンネル）。
 
-You can find the source code for Minima at GitHub:
-[jekyll][jekyll-organization] /
-[minima](https://github.com/jekyll/minima)
+本站的受众主要为在日本生活工作的朋友分享节约的技巧。
 
-You can find the source code for Jekyll at GitHub:
-[jekyll][jekyll-organization] /
-[jekyll](https://github.com/jekyll/jekyll)
+本站主要分享在东京都内的省钱技巧： <br />
+1) 手机支付优惠 <br />
+2) 电商最佳购物方式 <br />
+3) 信用卡开卡/使用优惠 <br />
+4) 优惠券 <br />
+5) 便利店/超市的最佳付款方式 <br />
+6) 积分是使用方式
 
-
-[jekyll-organization]: https://github.com/jekyll
+本站分享的活动信息也会贴出原文链接，攻略技巧以原文为准，因为活动内容也有可能变更，比如活动终止或者变更规则，请以原文规则为准。

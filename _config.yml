@@ -22,8 +22,8 @@ title: 東京節約チャンネル
 email: zhuyech@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   分享在东京生活的省钱技巧
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://www.izyc.me" # the base hostname & protocol for your site, e.g. http://example.com
+# baseurl: "" # the subpath of your site, e.g. /blog
+# url: "https://www.izyc.me" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: yussica0309
 # github_username:  yussica
 
@@ -39,7 +39,7 @@ plugins:
 # --- List of links in the navigation bar --- #
 
 navbar-links:
-  About Me: "about"
+  关于: "about"
   # Resources:
   #   - Beautiful Jekyll: "https://beautifuljekyll.com"
   #   - Learn markdown: "https://www.markdowntutorial.com/"
