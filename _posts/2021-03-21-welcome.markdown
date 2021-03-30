@@ -1,11 +1,20 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Welcome!"
 date:   2021-03-21 22:58:16 +0900
-categories: jekyll update
+last_modified_at: 2021-03-30 17:58:05.415 +0900
+categories: Welcome
 top: true
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+欢迎访问东京都节约频道，这里我们将分享关于在东京都生活如何省钱的小技巧。
+
+活动日历 ( [iOS])
+
+{% include googlecalendar.html %}
+
+
+[每月免费领积分]
+
 
 Jekyll requires blog post files to be named according to the following format:
 
@@ -28,3 +37,5 @@ Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most ou
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
+[iOS]: https://calendar.google.com/calendar/ical/2ad569p1pj82gmtjjj4d7ai2mo%40group.calendar.google.com/public/basic.ics
+[每月免费领积分]: /monthly-points

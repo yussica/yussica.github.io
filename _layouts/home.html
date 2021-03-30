@@ -48,8 +48,8 @@ layout: page
     </a>
 
     <p class="post-meta">
-      {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
-      Posted on {{ post.date | date: date_format }}
+      {% assign date_format = site.date_format | default: "%F %R" %}
+      最后更新： {{ post.last_modified_at | date: date_format }}
     </p>
 
     {% if thumbnail != "" %}
@@ -74,7 +74,7 @@ layout: page
       {{ post.excerpt | strip_html | xml_escape | truncatewords: excerpt_length }}
       {% assign excerpt_word_count = post.excerpt | number_of_words %}
       {% if post.content != post.excerpt or excerpt_word_count > excerpt_length %}
-        <a href="{{ post.url | absolute_url }}" class="post-read-more">[Read&nbsp;More]</a>
+        <a href="{{ post.url | absolute_url }}" class="post-read-more">[查看更多]</a>
       {% endif %}
     </div>
     {% endunless %}
@@ -132,8 +132,8 @@ layout: page
     </a>
 
     <p class="post-meta">
-      {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
-      Posted on {{ post.date | date: date_format }}
+      {% assign date_format = site.date_format | default: "%F %R" %}
+      最后更新： {{ post.last_modified_at | date: date_format }}
     </p>
 
     {% if thumbnail != "" %}
@@ -158,7 +158,7 @@ layout: page
       {{ post.excerpt | strip_html | xml_escape | truncatewords: excerpt_length }}
       {% assign excerpt_word_count = post.excerpt | number_of_words %}
       {% if post.content != post.excerpt or excerpt_word_count > excerpt_length %}
-        <a href="{{ post.url | absolute_url }}" class="post-read-more">[Read&nbsp;More]</a>
+        <a href="{{ post.url | absolute_url }}" class="post-read-more">[查看更多]</a>
       {% endif %}
     </div>
     {% endunless %}
