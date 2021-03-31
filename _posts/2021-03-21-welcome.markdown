@@ -20,7 +20,7 @@ tags: [活动]
 今日活动日历如下： ( [iOS])
 {% include googlecalendar.html %}
 
-参考<br />
+工具箱<br />
 [常设活动]{:target="_blank"} [开户邀请](/invitation){:target="_blank"} [东京物价参考](https://docs.google.com/spreadsheets/d/1sqomoAxb6Ka-3Dwnr2MUsAorsqv5EQHFlGjt8Edo-nE/edit?usp=sharing){:target="_blank"}
 
 
