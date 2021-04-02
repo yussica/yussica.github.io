@@ -2,7 +2,7 @@
 layout: post
 title:  入境日本前的要做的事
 date:   2021-03-29 16:00:00 +0900
-last_modified_at: 2021-03-31 23:09:34.913 +0900
+last_modified_at: 2021-04-02 17:48:53.258 +0900
 categories: jekyll update
 tags: [入境]
 ---

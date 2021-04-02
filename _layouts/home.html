@@ -4,10 +4,11 @@ layout: page
 
 {{ content }}
 
-{% assign posts = paginator.posts | default: site.posts %}
+{% assign posts = paginator.posts | default: site.posts | sort: 'last_modified_at' | reverse %}
+{% assign topposts = site.posts | where:"top",true | sort: 'last_modified_at' | reverse %}
 
 <div class="posts-list">
-  {% for post in posts %}
+  {% for post in topposts %}
     {% if post.top != true %}
         {% continue %}
     {% endif %}
