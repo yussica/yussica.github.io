@@ -26,12 +26,12 @@
 				<h2>税金計算機（生命保険料控除、医療費控除、扶養控除、ふるさと納税対応）</h2>
 
 				<div class="notice">
-					このシステムは令和2年分所得税（令和3年分住民税）に適用される税制に基づいて計算しています。<br />
-					今後の税制改正等により、実際の金額と異なってくる場合があります。<br />
-					また、計算結果に誤り等ある可能性がありますので、金額の目安程度にお使いください。<br />
+					本页面以令和2年分所得税（令和3年分住民税）的税制为基础进行计算。<br />
+					如果之后税制有所变化，可能与实际的税有差异，请以实际为准。<br />
+					本页面的计算也有可能不准确，仅供参考。<br />
 					<br />
-					背景色が <span style="background-color: #ffffaa; border: 1px solid #808080;">　　　　</span>
-					の欄に入力すると自動で計算されます。<br />
+					背景色为 <span style="background-color: #ffffaa; border: 1px solid #808080;">　　　　</span>
+					的栏目为必填项，输入之后会自动计算所得税和住民税。<br />
 				</div>
 
 				<form>
@@ -630,15 +630,19 @@
 					Inc.</a> All Rights Reserved.</div>
 		</div>
 	</div>
-	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 	<script async src="/assets/js/calc/function.js"></script>
 	<script async src="/assets/js/calc/common.js"></script>
-	<script>
+	<!-- <script type="text/javascript">
 		$(document).ready(function() {
-			// $("#salary").val("6000000");
-			// $("#salary").change();
+			$("#salary").focus();
+			$("#salary").val("6000000");
+			$("#salary").change();
+			$("#insurance_deduction").focus();
+			$("#insurance_deduction").val("800000");
+			$("#insurance_deduction").change();
 		});
-	</script>
+	</script> -->
 </body>
 
 </html>
