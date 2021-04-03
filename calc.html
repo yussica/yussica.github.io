@@ -41,22 +41,22 @@
 						for="salary_fix">所得金額調整控除対象（給与収入850万円超で令和2年12月31日時点で23歳未満の扶養親族あり）</label>
 					<table class="calc">
 						<tr>
-							<td class="field">給与収入</td>
+							<td class="field">年薪</td>
 							<td></td>
 							<td>
 								<input type="text" class="input required" name="salary" id="salary" value="0">
 							</td>
-							<td class="text">基本給・各種手当・賞与の差し引き前の年間合計額を入力してください（通勤手当・交通費を除く）。</td>
+							<td class="text">工资・补贴・奖金等一年的合计金额（通勤补贴・交通补贴除外）。</td>
 						</tr>
 						<tr>
-							<td class="underline field">給与所得控除</td>
+							<td class="underline field">免税额度</td>
 							<td class="underline">－</td>
 							<td class="underline">
 								<input type="text" class="input" name="salary_deduction" id="salary_deduction" value="0"
 									readonly>
 							</td>
 							<td class="text">
-								給与から一定割合を経費とみなして控除するものです。<br>所得金額調整控除対象の場合は含めて計算しています。
+								从年收入中扣除的免税额度
 							</td>
 						</tr>
 						<tr>
@@ -81,7 +81,7 @@
 							<td><br></td>
 						</tr>
 						<tr>
-							<td class="field">社会保険料控除</td>
+							<td class="field">社保缴纳总额</td>
 							<td></td>
 							<td>
 								<input type="text" class="input required" name="insurance_deduction"
@@ -90,7 +90,7 @@
 							<td class="text">給与・賞与のうち、「健康保険料」「厚生年金保険料」「雇用保険料」の年間合計額を入力してください。</td>
 						</tr>
 						<tr>
-							<td class="field">扶養控除</td>
+							<td class="field">抚养减免额度</td>
 							<td></td>
 							<td>
 								<input type="text" class="input" name="dependent_deduction_copy"
@@ -100,7 +100,7 @@
 									href="#dependent">扶養控除計算</a>より入力すると反映されます。</td>
 						</tr>
 						<tr>
-							<td class="field">配偶者控除</td>
+							<td class="field">配偶减免额度</td>
 							<td></td>
 							<td>
 								<input type="text" class="input" name="spouse_deduction_copy" id="spouse_deduction_copy"
@@ -110,7 +110,7 @@
 									href="#spouse">配偶者控除計算</a>より入力すると反映されます。</td>
 						</tr>
 						<tr>
-							<td class="field">医療費控除</td>
+							<td class="field">医保减免额度</td>
 							<td></td>
 							<td>
 								<input type="text" class="input" name="medical_deduction_copy"
@@ -120,7 +120,7 @@
 									href="#medical">医療費控除計算</a>より入力すると反映されます。</td>
 						</tr>
 						<tr>
-							<td class="field">生命保険料控除</td>
+							<td class="field">寿险减免额度</td>
 							<td></td>
 							<td>
 								<input type="text" class="input" name="life_insurance_deduction_copy"
@@ -130,7 +130,7 @@
 									href="#insurance">生命保険料控除計算</a>より入力すると反映されます。</td>
 						</tr>
 						<tr>
-							<td class="field">地震保険料控除</td>
+							<td class="field">地震保险减免额度</td>
 							<td></td>
 							<td>
 								<input type="text" class="input" name="quake_deduction_copy" id="quake_deduction_copy"
@@ -140,16 +140,16 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="field">その他控除</td>
+							<td class="field">其他减免额度</td>
 							<td></td>
 							<td>
 								<input type="text" class="input required" name="etc_deduction" id="etc_deduction"
 									value="0">
 							</td>
-							<td class="text">その他控除等がある場合は控除額を入力してください。</td>
+							<td class="text">如果有其他减免项目请输入（例如：ふるさと納税）。</td>
 						</tr>
 						<tr>
-							<td class="underline field">基礎控除</td>
+							<td class="underline field">基本免税额度</td>
 							<td class="underline">－</td>
 							<td class="underline">
 								<input type="text" class="input" name="basic_deduction" id="basic_deduction"
@@ -157,7 +157,7 @@
 								<input type="hidden" name="basic_deduction_city" id="basic_deduction_city"
 									value="430,000" readonly>
 							</td>
-							<td class="text">すべての納税者から控除されます。<br>（所得税最大48万円/住民税最大43万円）</td>
+							<td class="text">所有纳税人都能享受的免税额度<br>（所得税最多可免48万円/住民税最多43万円）</td>
 						</tr>
 						<tr>
 							<td class="field">所得控除(所得税)</td>
@@ -633,6 +633,12 @@
 	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.js"></script>
 	<script async src="/assets/js/calc/function.js"></script>
 	<script async src="/assets/js/calc/common.js"></script>
+	<script>
+		$(document).ready(function() {
+			// $("#salary").val("6000000");
+			// $("#salary").change();
+		});
+	</script>
 </body>
 
 </html>
