@@ -1,0 +1,90 @@
+@charset "utf-8";
+.aaprad{
+    display: table;
+    width: 100%;
+    position: relative;
+    clear: both;
+    line-height: 1.2;
+    border: 1px solid #cccccc;
+    margin-top: 30px;
+}
+/*サムネイル画像*/
+.aaprad-img{
+    float: left;
+    line-height: 1;
+    overflow: hidden;
+    position: relative;
+    padding: 8px 0 10px 10px;
+    /*サムネイル画像枠サイズはこちら*/
+    /*width: 105px;
+    height: 79px;*/
+    
+    width: 110px;
+    height: 82px;
+}
+.aaprad-img > a {
+display: block;
+}
+.aaprad-img a img{
+    width: 100%;
+    height: auto;
+    border: none;
+}
+/*タイトル*/
+.aaprad-title{
+    overflow: hidden;
+}
+.aaprad-title a {
+    padding: 8px;
+    display: block;
+    /*タイトルのフォント指定等はこちら*/
+    font-weight: bold;
+    color: #000;
+    font-size: 16px;
+}
+.aaprad-description{
+    overflow: hidden;
+}
+.aaprad-description a {
+    padding: 0 8px 8px;
+    display: block;
+    /*本文のフォント指定等はこちら*/
+    color: #000;
+    font-size: 0.87rem;
+    text-decoration: none;
+}
+/*広告主体主名称*/
+.aaprad-company{
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.aaprad-company a {
+    padding: 0 8px;
+    display: block;
+    /*広告主体主名称のフォント指定等はこちら*/
+    color: #999;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+.aaprad-info{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.aaprad-info a {
+    text-decoration: none;
+    font-family: Arial,"メイリオ",Meiryo,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",sans-serif;
+    vertical-align: middle;
+    color: #555;
+    font-size: 10px;
+}
+.aaprad-info img {
+    margin-left: 4px;
+    display:inline-block;
+    vertical-align: middle;
+}
+.aaprad-thumbnail .aaprad-title ,
+.aaprad-thumbnail .aaprad-description ,
+.aaprad-thumbnail .aaprad-company {
+    margin-left:116px;
+}

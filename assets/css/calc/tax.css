@@ -1,0 +1,83 @@
+#main table.calc {
+	border-collapse: collapse;
+    margin: 10px 0 20px;
+    border: 0;
+    line-height:1.2;
+}
+#main table.calc td {
+	padding: 3 0px;
+    border: 0;
+}
+#main table.calc td.underline {
+	border-bottom: solid 1px black;
+}
+#main table.calc td.field {
+    width: 160px;
+    font-size: 16px;
+    padding-left: 5px;
+}
+.mandatory {
+	font-weight: bold;
+	color: red;
+}
+#main table.calc input {
+	text-align: right;
+	font-size: 20px;
+    padding: 2px 5px 2px 3px;
+	font-family: Arial;
+	width: 110px;
+    background-color: #ffffff;
+    border: 1px solid #808080;
+    ime-mode: disabled;
+}
+#main table.calc select {
+    font-size: 18px;
+    background-color: #ffffaa;
+}
+#main table.calc .required {
+    background-color: #ffffaa;
+}
+.text {
+	padding-left: 10px;
+	font-size: 14px;
+	vertical-align: middle;
+}
+form {
+    margin: 20px 0;
+}
+div.notice {
+    width: 650px;
+    margin: 20px 0;
+    padding: 5px 10px;
+    border: 2px solid #ffaa00;
+    font-size: 14px;
+    line-height:1.2;
+}
+div#ad_center {
+    float: left;
+    padding-top: 30px;
+}
+div.changelog {
+    padding: 20px 0 5px;
+}
+
+div.changelog p {
+    text-align: right;
+}
+.ad2 {
+    margin: 40px 10px;
+}
+p.comment {
+    margin-left: 200px;
+    margin-top: -40px;
+}
+p.comment2 {
+    font-size: 12px;
+}
+.ad {
+    margin: 12px 0;
+}
+.clear {
+    clear: both;
+    float: none;
+}

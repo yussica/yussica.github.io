@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description"
+		content="税金計算機についてのページ。1年間の所得税・住民税の年額・月額を所得金額や控除金額を入力するだけでその場で簡易計算！医療費控除、生命保険料控除、地震保険料控除、ふるさと納税にも対応。">
+	<meta name="keywords" content="住民税,計算,所得税,市民税,県民税,税金,ふるさと納税,医療費控除,生命保険料控除,地震保険料控除,扶養控除">
+	<link rel="stylesheet" href="/assets/css/calc/common.css">
+	<link rel="stylesheet" href="/assets/css/calc/tax.css">
+	<link rel="stylesheet" href="/assets/css/calc/aaprad.css">
+	<title>税金計算機 | 所得税・住民税簡易計算機</title>
+</head>
+
+<body>
+	<div id="top">
+		<div id="header">
+			<h1><a href="https://www.zeikin5.com/calc/" target="_blank">所得税・住民税簡易計算機</a></h1>
+			<div id="pr">
+				<h3>所得税・住民税の計算ならおまかせ！収入金額を入れるだけでかんたん税金計算。医療費控除、生命保険料控除、地震保険料控除の機能も充実。ふるさと納税にも対応。</h3>
+			</div>
+		</div>
+		<div id="contents">
+			<div id="main">
+				<h2>税金計算機（生命保険料控除、医療費控除、扶養控除、ふるさと納税対応）</h2>
+
+				<div class="notice">
+					このシステムは令和2年分所得税（令和3年分住民税）に適用される税制に基づいて計算しています。<br />
+					今後の税制改正等により、実際の金額と異なってくる場合があります。<br />
+					また、計算結果に誤り等ある可能性がありますので、金額の目安程度にお使いください。<br />
+					<br />
+					背景色が <span style="background-color: #ffffaa; border: 1px solid #808080;">　　　　</span>
+					の欄に入力すると自動で計算されます。<br />
+				</div>
+
+				<form>
+					<input type="checkbox" name="minority" id="minority"><label
+						for="minority">令和3年1月1日時点で20歳未満</label><br>
+					<input type="checkbox" name="salary_fix" id="salary_fix"><label
+						for="salary_fix">所得金額調整控除対象（給与収入850万円超で令和2年12月31日時点で23歳未満の扶養親族あり）</label>
+					<table class="calc">
+						<tr>
+							<td class="field">給与収入</td>
+							<td></td>
+							<td>
+								<input type="text" class="input required" name="salary" id="salary" value="0">
+							</td>
+							<td class="text">基本給・各種手当・賞与の差し引き前の年間合計額を入力してください（通勤手当・交通費を除く）。</td>
+						</tr>
+						<tr>
+							<td class="underline field">給与所得控除</td>
+							<td class="underline">－</td>
+							<td class="underline">
+								<input type="text" class="input" name="salary_deduction" id="salary_deduction" value="0"
+									readonly>
+							</td>
+							<td class="text">
+								給与から一定割合を経費とみなして控除するものです。<br>所得金額調整控除対象の場合は含めて計算しています。
+							</td>
+						</tr>
+						<tr>
+							<td class="field">給与所得金額</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="salary_income" id="salary_income" value="0"
+									readonly>
+							</td>
+							<td class="text">給与所得控除後の金額が給与所得金額です。</td>
+						</tr>
+						<tr>
+							<td class="field"><strong>総所得金額</strong></td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="total_income" id="total_income" value="0"
+									readonly>
+							</td>
+							<td class="text">総合課税分の所得の合計額です。（現時点では＝給与所得金額）</td>
+						</tr>
+						<tr>
+							<td><br></td>
+						</tr>
+						<tr>
+							<td class="field">社会保険料控除</td>
+							<td></td>
+							<td>
+								<input type="text" class="input required" name="insurance_deduction"
+									id="insurance_deduction" value="0">
+							</td>
+							<td class="text">給与・賞与のうち、「健康保険料」「厚生年金保険料」「雇用保険料」の年間合計額を入力してください。</td>
+						</tr>
+						<tr>
+							<td class="field">扶養控除</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="dependent_deduction_copy"
+									id="dependent_deduction_copy" value="0" readonly>
+							</td>
+							<td class="text">一定所得以下の扶養親族が居る場合に扶養控除が受けられます。<br /><a
+									href="#dependent">扶養控除計算</a>より入力すると反映されます。</td>
+						</tr>
+						<tr>
+							<td class="field">配偶者控除</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="spouse_deduction_copy" id="spouse_deduction_copy"
+									value="0" readonly>
+							</td>
+							<td class="text">一定所得以下の配偶者が居る場合に配偶者控除が受けられます。<br /><a
+									href="#spouse">配偶者控除計算</a>より入力すると反映されます。</td>
+						</tr>
+						<tr>
+							<td class="field">医療費控除</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="medical_deduction_copy"
+									id="medical_deduction_copy" value="0" readonly>
+							</td>
+							<td class="text">医療費の支払いがある場合に適用可能です。（※要確定申告）<br /><a
+									href="#medical">医療費控除計算</a>より入力すると反映されます。</td>
+						</tr>
+						<tr>
+							<td class="field">生命保険料控除</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="life_insurance_deduction_copy"
+									id="life_insurance_deduction_copy" value="0" readonly>
+							</td>
+							<td class="text">生命保険・個人年金・介護保険などの支払いがある場合に適用可能です。<br /><a
+									href="#insurance">生命保険料控除計算</a>より入力すると反映されます。</td>
+						</tr>
+						<tr>
+							<td class="field">地震保険料控除</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="quake_deduction_copy" id="quake_deduction_copy"
+									value="0" readonly>
+							</td>
+							<td class="text">地震保険料の支払いがある場合に適用可能です。<br /><a href="#quake">地震保険料控除計算</a>より入力すると反映されます。
+							</td>
+						</tr>
+						<tr>
+							<td class="field">その他控除</td>
+							<td></td>
+							<td>
+								<input type="text" class="input required" name="etc_deduction" id="etc_deduction"
+									value="0">
+							</td>
+							<td class="text">その他控除等がある場合は控除額を入力してください。</td>
+						</tr>
+						<tr>
+							<td class="underline field">基礎控除</td>
+							<td class="underline">－</td>
+							<td class="underline">
+								<input type="text" class="input" name="basic_deduction" id="basic_deduction"
+									value="480,000" readonly>
+								<input type="hidden" name="basic_deduction_city" id="basic_deduction_city"
+									value="430,000" readonly>
+							</td>
+							<td class="text">すべての納税者から控除されます。<br>（所得税最大48万円/住民税最大43万円）</td>
+						</tr>
+						<tr>
+							<td class="field">所得控除(所得税)</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="deduction" id="deduction" value="480,000"
+									readonly>
+							</td>
+							<td class="text">所得税の所得金額から差し引かれる金額の合計です。</td>
+						</tr>
+						<tr>
+							<td class="field">所得控除(住民税)</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="deduction_city" id="deduction_city"
+									value="430,000" readonly>
+							</td>
+							<td class="text">住民税の所得金額から差し引かれる金額の合計です。</td>
+						</tr>
+						<tr>
+							<td><br></td>
+						</tr>
+						<tr>
+							<td class="field">課税所得(所得税)</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="taxable_income" id="taxable_income" value="0"
+									readonly>
+							</td>
+							<td class="text">所得税の税率・税金計算の元になる金額です。</td>
+						</tr>
+						<tr>
+							<td class="field">課税所得(住民税)</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="taxable_income_city" id="taxable_income_city"
+									value="0" readonly>
+							</td>
+							<td class="text">住民税の税率・税金計算の元になる金額です。</td>
+						</tr>
+						<tr>
+							<td><br></td>
+						</tr>
+						<tr>
+							<td class="field"><strong>所得税</strong></td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="income_tax" id="income_tax" value="0" readonly>
+							</td>
+							<td class="text">
+								国に納税する所得税の年間税額です。給与所得者は1/12ほどの概算金額を既に毎月源泉徴収されています。
+							</td>
+						</tr>
+						<tr>
+							<td class="field">復興特別所得税</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="special_tax" id="special_tax" value="0" readonly>
+							</td>
+							<td class="text">平成49年まで所得税額の2.1％が<a
+									href="http://www.nta.go.jp/publication/pamph/shotoku/fukko_tokubetsu/index.htm"
+									target="_blank">復興特別所得税</a>として課税されます。</td>
+						</tr>
+						<tr>
+							<td class="field"><strong>所得税・復興特別税</strong></td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="national_tax" id="national_tax" value="0"
+									readonly>
+							</td>
+							<td class="text">
+								合計額の100円未満を切り捨てた額が国税の納付税額です。
+							</td>
+						</tr>
+						<tr>
+							<td><br></td>
+						</tr>
+						<tr>
+							<td class="field"><strong>住民税</strong></td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="residence_tax" id="residence_tax" value="0"
+									readonly>
+							</td>
+							<td class="text">住民税（都道府県民税＋市町村民税）の年間税額です。翌年より1年間かけてこの金額が徴収されます。</td>
+						</tr>
+						<tr>
+							<td class="field">　(都道府県民税)</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="residence_tax_city" id="residence_tax_pref"
+									value="0" readonly>
+							</td>
+							<td class="text">住民税のうち、都道府県民税の金額です。</td>
+						</tr>
+						<tr>
+							<td class="field">　(市町村税)</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="residence_tax_pref" id="residence_tax_city"
+									value="0" readonly>
+							</td>
+							<td class="text">住民税のうち、市町村民税の金額です。</td>
+						</tr>
+
+
+						<tr>
+							<td class="field">毎月住民税額</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="residence_tax_month" id="residence_tax_month"
+									value="0" readonly>
+							</td>
+							<td class="text">翌年6月ごろより毎月概ね1/12の金額が給料より控除されます。</td>
+						</tr>
+
+						<tr>
+							<td><br></td>
+						</tr>
+						<tr>
+							<td class="field">ふるさと納税推奨額</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="furusato_price" id="furusato_price" value="0"
+									readonly>
+							</td>
+							<td class="text">ふるさと納税の寄付金額の上限目安です。（β版）</td>
+						</tr>
+					</table>
+
+					<p class="comment2">
+						注1：住民税均等割の非課税基準は93万円に計算してありますが、地域ごとに異なります。（93万円/96.5万円/100万円）<br />
+						注2：住民税均等割は標準税率5,000円（都道府県1,500円/市町村3,500円）にて計算してありますが、一部地域は異なります。（横浜市6,200円など） ※詳細は<a
+							href="/info/flat/">均等割一覧</a><br />
+						注3：住民税所得割は標準税率10％（都道府県4％/市町村6％）にて計算してありますが、一部地域は異なります。（夕張市10.5％/名古屋市9.7％など） ※詳細は<a
+							href="/info/flat/">所得割一覧</a><br />
+					</p>
+
+					<h3><a name="dependent"></a>扶養控除計算</h3>
+					<p class="comment">
+						<a href="http://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1180.htm"
+							target="_blank">扶養控除について（国税庁）</a><br />
+						扶養親族は年間の合計所得金額が48万円以下の配偶者以外の親族です。年齢はその年の12月31日現在で判断します。<br />
+					</p>
+
+					<table class="calc">
+						<tr>
+							<td class="field">扶養控除(一般)</td>
+							<td>＋</td>
+							<td>
+								<input type="text" class="input" name="dependent_deduction_normal"
+									id="dependent_deduction_normal" value="0">
+							</td>
+							<td class="text">
+
+								<select name="data[dependent_deduction_normal_num]" id="dependent_deduction_normal_num">
+									<option value="0">0人</option>
+									<option value="1">1人</option>
+									<option value="2">2人</option>
+									<option value="3">3人</option>
+									<option value="4">4人</option>
+									<option value="5">5人</option>
+									<option value="6">6人</option>
+									<option value="7">7人</option>
+									<option value="8">8人</option>
+									<option value="9">9人</option>
+								</select>
+								16歳以上の扶養親族人数を選択してください。
+							</td>
+						</tr>
+						<tr>
+							<td class="field">扶養控除(特定)</td>
+							<td>＋</td>
+							<td>
+								<input type="text" class="input" name="dependent_deduction_specific"
+									id="dependent_deduction_specific" value="0">
+							</td>
+							<td class="text">
+								<select name="data[dependent_deduction_specific_num]"
+									id="dependent_deduction_specific_num">
+									<option value="0">0人</option>
+									<option value="1">1人</option>
+									<option value="2">2人</option>
+									<option value="3">3人</option>
+									<option value="4">4人</option>
+									<option value="5">5人</option>
+									<option value="6">6人</option>
+									<option value="7">7人</option>
+									<option value="8">8人</option>
+									<option value="9">9人</option>
+								</select>
+								19歳以上23歳未満の扶養親族人数を選択してください。
+							</td>
+						</tr>
+						<tr>
+							<td class="field">扶養控除(同居老親)</td>
+							<td>＋</td>
+							<td>
+								<input type="text" class="input" name="dependent_deduction_aged_family"
+									id="dependent_deduction_aged_family" value="0">
+							</td>
+							<td class="text">
+								<select name="data[dependent_deduction_aged_family_num]"
+									id="dependent_deduction_aged_family_num">
+									<option value="0">0人</option>
+									<option value="1">1人</option>
+									<option value="2">2人</option>
+									<option value="3">3人</option>
+									<option value="4">4人</option>
+									<option value="5">5人</option>
+									<option value="6">6人</option>
+									<option value="7">7人</option>
+									<option value="8">8人</option>
+									<option value="9">9人</option>
+								</select>
+								70歳以上の同居の直系尊属の人数を選択してください。
+							</td>
+						</tr>
+						<tr>
+							<td class="underline field">扶養控除(老人)</td>
+							<td class="underline">＋</td>
+							<td class="underline">
+								<input type="text" class="input" name="dependent_deduction_aged"
+									id="dependent_deduction_aged" value="0">
+							</td>
+							<td class="text">
+								<select name="data[dependent_deduction_aged_num]" id="dependent_deduction_aged_num">
+									<option value="0">0人</option>
+									<option value="1">1人</option>
+									<option value="2">2人</option>
+									<option value="3">3人</option>
+									<option value="4">4人</option>
+									<option value="5">5人</option>
+									<option value="6">6人</option>
+									<option value="7">7人</option>
+									<option value="8">8人</option>
+									<option value="9">9人</option>
+								</select>
+								その他の70歳以上の扶養親族人数を選択してください。
+							</td>
+						</tr>
+						<tr>
+							<td class="field"><strong>扶養控除額</strong></td>
+							<td>＝</td>
+							<td>
+								<input type="text" class="input" name="dependent_deduction" id="dependent_deduction"
+									value="0" readonly>
+							</td>
+							<td class="text">所得税の扶養控除額です。(各38万円/63万円/58万円/48万円)</td>
+						</tr>
+						<tr>
+							<td class="field"><strong>扶養控除額</strong></td>
+							<td>＝</td>
+							<td>
+								<input type="text" class="input" name="dependent_deduction_city"
+									id="dependent_deduction_city" value="0" readonly>
+							</td>
+							<td class="text">住民税の扶養控除額です。(各33万円/45万円/45万円/38万円)</td>
+						</tr>
+					</table>
+
+					<h3><a name="medical"></a>配偶者控除計算</h3>
+					<p class="comment">
+						<a href="http://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1191.htm"
+							target="_blank">配偶者控除について（国税庁）</a> / <a
+							href="http://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1195.htm"
+							target="_blank">配偶者特別控除について（国税庁）</a><br />
+						配偶者の所得が48万円以下の場合「配偶者控除」、133万円以下の場合「配偶者特別控除」を受けられます。<br />
+					</p>
+
+					<input type="checkbox" name="spouse" id="spouse">
+					<label for="spouse">配偶者控除（配偶者特別控除）の適用を受ける場合にチェックをしてください</label>
+					<br />
+					<input type="checkbox" name="spouse_aged" id="spouse_aged">
+					<label for="spouse_aged">配偶者が令和2年12月31日時点で70歳以上の場合にチェックをしてください</label>
+
+					<table class="calc">
+						<tr>
+							<td class="field">配偶者の所得額</td>
+							<td></td>
+							<td>
+								<input type="text" class="input required" name="spouse_income" id="spouse_income"
+									value="0">
+							</td>
+							<td class="text">配偶者の合計所得金額（≠収入金額）を入力してください。</td>
+						</tr>
+						<tr>
+							<td class="field"><strong>配偶者控除額</strong></td>
+							<td>＝</td>
+							<td>
+								<input type="text" class="input" name="spouse_deduction" id="spouse_deduction" value="0"
+									readonly>
+							</td>
+							<td class="text">所得税の配偶者控除（または配偶者特別控除）額です。</td>
+						</tr>
+						<tr>
+							<td class="field"><strong>配偶者控除額</strong></td>
+							<td>＝</td>
+							<td>
+								<input type="text" class="input" name="spouse_deduction_city" id="spouse_deduction_city"
+									value="0" readonly>
+							</td>
+							<td class="text">住民税の配偶者控除（または配偶者特別控除）額です。</td>
+						</tr>
+					</table>
+					<p class="comment2">
+						ここでは分かりやすいように配偶者控除、配偶者特別控除は自動判定して適用できる方を自動適用しています。<br />
+					</p>
+
+					<h3><a name="medical"></a>医療費控除計算</h3>
+					<p class="comment"><a href="http://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1120.htm"
+							target="_blank">医療費控除について（国税庁）</a></p>
+
+					<table class="calc">
+						<tr>
+							<td class="field">医療費の総額</td>
+							<td></td>
+							<td>
+								<input type="text" class="input required" name="medical_payment" id="medical_payment"
+									value="0">
+							</td>
+							<td class="text">1年間で実際に支払った医療費の総額を入力してください。（保険金等差し引き後の金額）</td>
+						</tr>
+						<tr>
+							<td class="underline field">(基準金額)</td>
+							<td class="underline">－</td>
+							<td class="underline">
+								<input type="text" class="input" name="medical_min" id="medical_min" value="0" readonly>
+							</td>
+							<td class="text">10万円 と 所得金額等の5％ のいずれか少ない方の金額</td>
+						</tr>
+						<tr>
+							<td class="field"><strong>医療費控除額</strong></td>
+							<td>＝</td>
+							<td>
+								<input type="text" class="input" name="medical_deduction" id="medical_deduction"
+									value="0" readonly>
+							</td>
+							<td class="text">基準金額を超える金額が医療費控除です。（最大200万円）</td>
+						</tr>
+					</table>
+
+					<h3><a name="insurance"></a>生命保険料控除</h3>
+					<p class="comment"><a href="http://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1140.htm"
+							target="_blank">生命保険料控除について（国税庁）</a></p>
+
+					<table class="calc">
+						<tr>
+							<td class="field">(新)生命保険料</td>
+							<td>&nbsp;&nbsp;&nbsp;</td>
+							<td>
+								<input type="text" class="input required" name="life_new_payment" id="life_new_payment"
+									value="0">
+							</td>
+							<td class="text">平成24年1月1日以後に契約の生命保険料の1年間の支払総額</td>
+						</tr>
+						<tr>
+							<td class="field">(旧)生命保険料</td>
+							<td></td>
+							<td>
+								<input type="text" class="input required" name="life_old_payment" id="life_old_payment"
+									value="0">
+							</td>
+							<td class="text">平成23年12月31日以前に契約の生命保険料の1年間の支払総額</td>
+						</tr>
+						<tr>
+							<td class="field">(新)個人年金保険料</td>
+							<td></td>
+							<td>
+								<input type="text" class="input required" name="pension_new_payment"
+									id="pension_new_payment" value="0">
+							</td>
+							<td class="text">平成24年1月1日以後に契約の個人年金保険料の1年間の支払総額</td>
+						</tr>
+						<tr>
+							<td class="field">(旧)個人年金保険料</td>
+							<td></td>
+							<td>
+								<input type="text" class="input required" name="pension_old_payment"
+									id="pension_old_payment" value="0">
+							</td>
+							<td class="text">平成23年12月31日以前に契約の個人年金保険料の1年間の支払総額</td>
+						</tr>
+						<tr>
+							<td class="underline field">(新)介護保険料</td>
+							<td class="underline"></td>
+							<td class="underline">
+								<input type="text" class="input required" name="care_payment" id="care_payment"
+									value="0">
+							</td>
+							<td class="text">平成24年1月1日以後に契約の介護保険料の1年間の支払総額</td>
+						</tr>
+						<tr>
+							<td class="field">生命保険料控除額</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="life_insurance_deduction"
+									id="life_insurance_deduction" value="0" readonly>
+							</td>
+							<td class="text">所得税の生命保険料控除です。<br />（[新]各最大4万円、[旧]各最大5万円/最大合計12万円）</td>
+						</tr>
+						<tr>
+							<td class="field">生命保険料控除額</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="life_insurance_deduction_residence"
+									id="life_insurance_deduction_residence" value="0" readonly>
+							</td>
+							<td class="text">住民税の生命保険料控除です。<br />（[新]各最大2.8万円、[旧]各最大3.5万円/最大合計7万円）</td>
+						</tr>
+					</table>
+					<p class="comment2">
+						生命保険料同士または個人年金保険料同士の新旧保険料が両方ある場合で、旧保険料が4万円以上の場合には意図的に新保険料の控除を適用しない（入力しない）ほうが有利になります。<br />
+					</p>
+
+					<h3><a name="quake"></a>地震保険料控除</h3>
+					<p class="comment"><a href="http://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1145.htm"
+							target="_blank">地震保険料控除について（国税庁）</a></p>
+
+					<table class="calc">
+						<tr>
+							<td class="field">地震保険料</td>
+							<td>&nbsp;&nbsp;&nbsp;</td>
+							<td>
+								<input type="text" class="input required" name="quake_payment" id="quake_payment"
+									value="0">
+							</td>
+							<td class="text">地震保険料の1年間の支払総額を入力してください。</td>
+						</tr>
+						<tr>
+							<td class="underline field">旧長期損害保険料</td>
+							<td class="underline"></td>
+							<td class="underline">
+								<input type="text" class="input required" name="quake_old_payment"
+									id="quake_old_payment" value="0">
+							</td>
+							<td class="text">経過措置の一定要件を満たす長期損害保険料の1年間の支払総額を入力してください。</td>
+						</tr>
+						<tr>
+							<td class="field"><a name="medical"></a>地震保険料控除額</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="quake_deduction" id="quake_deduction" value="0"
+									readonly>
+							</td>
+							<td class="text">所得税の地震保険料控除です。<br />（[地震]最大5万円、[長期]最大1.5万円/最大合計5万円）</td>
+						</tr>
+						<tr>
+							<td class="field"><a name="medical"></a>地震保険料控除額</td>
+							<td></td>
+							<td>
+								<input type="text" class="input" name="quake_deduction_city" id="quake_deduction_city"
+									value="0" readonly>
+							</td>
+							<td class="text">住民税の地震保険料控除です。<br />（[地震]最大2.5万円、[長期]最大1万円/最大合計2.5万円）</td>
+						</tr>
+					</table>
+				</form>
+
+				<div class="clear">
+				</div>
+
+			</div>
+			<div id="pageTop">
+				<a href="#">ページのトップへ戻る</a>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="copyright">Copyright &copy; 2012- <a href="http://www.limitup.co.jp/" target="_blank">Limitup
+					Inc.</a> All Rights Reserved.</div>
+		</div>
+	</div>
+	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.12.4/jquery.js"></script>
+	<script async src="/assets/js/calc/function.js"></script>
+	<script async src="/assets/js/calc/common.js"></script>
+</body>
+
+</html>
