@@ -1,0 +1,10 @@
+.blog-post .payimg {
+	width: 48px;
+	height: 48px;
+	border-radius: 22.5%;
+	border: 1px #dddddd solid;
+	margin:8px auto;
+}
+.payimg img {
+	border-radius: 22.5%;
+}
