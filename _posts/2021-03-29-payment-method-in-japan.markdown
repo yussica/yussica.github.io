@@ -2,25 +2,15 @@
 layout: post
 title: 日本的无现金支付
 date: 2021-03-29 19:07:06 +0900
-last_modified_at: 2021-04-04 18:40:20.771 +0900
+last_modified_at: 2021-04-05 23:15:48.039 +0900
 category: 支付
 author: 
 tags: [支付]
-summary: 
+summary: test
 css: /assets/css/main.css?t=202104
 ---
 
-[![cashles](/assets/img/cashless.png)](https://crowdcast.jp/ja/post/%e5%9b%bd%e5%86%85%e3%82%ad%e3%83%a3%e3%83%83%e3%82%b7%e3%83%a5%e3%83%ac%e3%82%b9%e6%b1%ba%e6%b8%88%e3%82%ab%e3%82%aa%e3%82%b9%e3%83%9e%e3%83%83%e3%83%97-2019%e5%b9%b46%e6%9c%88%e7%89%88/){:target="_blank"}
-
-## 日本的支付方式主要有8大类
-1. バーコード決済：手机支付App
-2. 電子マネー：电子钱包
-3. 電子マネー（交通系）：公交卡支付
-4. クレジットカード：信用卡
-5. JCBプレモカード：JCB礼品卡
-6. ブランドプリペイドカード：预付卡
-7. Apple Pay/Google Pay
-8. QUO カード：QUO礼品卡
+[![cashles](/assets/img/cashless/cashless.png)](https://crowdcast.jp/ja/post/%e5%9b%bd%e5%86%85%e3%82%ad%e3%83%a3%e3%83%83%e3%82%b7%e3%83%a5%e3%83%ac%e3%82%b9%e6%b1%ba%e6%b8%88%e3%82%ab%e3%82%aa%e3%82%b9%e3%83%9e%e3%83%83%e3%83%97-2019%e5%b9%b46%e6%9c%88%e7%89%88/){:target="_blank"}
 
 ### 1. 手机支付App(バーコード決済, スマホ決済)
 
@@ -218,13 +208,44 @@ css: /assets/css/main.css?t=202104
   </tbody>
 </table>
 
-### 4. 信用卡
-### 5. JCB礼品卡
-### 6. 预付卡
+### 4. 信用卡(クレジットカード)
+
+日本主流的信用卡品牌有以下四种
+使用方式：绑定Apple Pay或者Google Pay、刷卡、绑定其他手机App支付
+
+1. Visa ![visa](/assets/img/creditcard/visa.png)
+   
+2. Master ![master](/assets/img/creditcard/mastercard.png)
+   
+3. JCB ![jcb](/assets/img/creditcard/jcb.png)
+   
+4. 银联 ![unionpay](/assets/img/creditcard/unionpay.png)
+
+### 5. JCB礼品卡([JCBプレモカード](https://www.jcb.co.jp/promotion/jcb_premo/))
+JCB礼品卡是由JCB公司推出的礼品卡，刚入境的时候没有日本发行的银行卡或者信用卡，也可以去便利店购买JCB礼品卡，使用方式和信用卡一样，充值就可以用了。<br />
+[充值方式](https://www.jcb.co.jp/voucher/premo/available/index.html?%20link_id=cojp_premolp_charge_pc#A002)：罗森收银台、711ATM或线上支付<br />
+[售卡地点](https://www.jcb.co.jp/voucher/premo/pop/premo-vendor/index.html?link_id=cojp_premolp_vendor_pc)：罗森，全家等<br />
+[消费场所](https://www.jcb.jp/products/jcbprepaid/premo-available/index.html?link_id=cojp_premolp_available_pc)：日本亚马逊、肯德基、麦当劳、食其家、Tully's Coffee、全家、罗森、罗森100、高岛屋、蔦屋書店、giftee
+
+![JCB Premo](/assets/img/cashless/jcb_premo_img01.jpg) &nbsp;&nbsp;&nbsp; ![JCB Premo](/assets/img/cashless/jcb_premo_img02.jpg) &nbsp;&nbsp;&nbsp; ![JCB Premo](/assets/img/cashless/jcb_premo_img03.jpg)
+
+### 6. 预付卡(プリペイドカード)
+由运营商、银行发行的储值卡跟JCB Premo类似，多了添加到Apple Pay或者Google Pay的功能，可以当做银行卡debit来刷卡消费，支持线上线下消费。缺点是充值之后一般不能再提现了。主要是搭配各家的积分，积分充值到预付卡再消费，是各家积分的高效实用渠道。
+
+![au](/assets/img/prepaid/au.png) &nbsp;&nbsp;&nbsp; ![webmoney](/assets/img/prepaid/webmoney.png) &nbsp;&nbsp;&nbsp; ![line](/assets/img/prepaid/line.png) &nbsp;&nbsp;&nbsp;
+
+![d](/assets/img/prepaid/d.png) &nbsp;&nbsp;&nbsp; ![ana](/assets/img/prepaid/ana.png) &nbsp;&nbsp;&nbsp; ![mitsuisumitomo](/assets/img/prepaid/mitsuisumitomo.png)
+
 ### 7. Apple Pay/Google Pay
-### 8. QUO礼品卡
+跟国内一样绑定银行卡或者信用卡即可，多了预付卡绑定，当然也可以绑定西瓜卡和pasmo
 
+![appleypay](/assets/img/cashless/applepay.png) &nbsp;&nbsp;&nbsp; ![googlepay](/assets/img/cashless/googlepay.png)
 
+### 8. QUO礼品卡([QUO カード](https://www.quocard.com/))
+礼品卡的一种，下载专用app扫码支付或者实体卡。被用作礼品送礼的情况比较多，类似国内送红包的习俗吧。<br />
+[加盟店](https://www.quocard.com/member/)：便利店、书店居多
+
+![quo](/assets/img/cashless/quo.png){:width="70%"}
 <!-- <tr>
 	<td style="text-align: center"><div class="payimg"><img src="/assets/img/quo-pay.png" alt="alt QUOカードPay" title="QUOカードPay" /></div><a href="https://apps.apple.com/jp/app/quo%E3%82%AB%E3%83%BC%E3%83%89pay-%E5%85%AC%E5%BC%8F-%E6%B0%97%E6%8C%81%E3%81%A1%E3%81%8C%E4%BC%9D%E3%82%8F%E3%82%8B%E3%82%AE%E3%83%95%E3%83%88%E3%82%A2%E3%83%97%E3%83%AA/id1435761397" target="_blank">QUOカードPay</a></td>
 	<td style="text-align: left"> - </td>
