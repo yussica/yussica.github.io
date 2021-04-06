@@ -18,5 +18,4 @@ full-width: true
 | [ポイントインカム](https://pointi.jp/p/?a=rbf881564747){:target="_blank"} | 1000积分=100円 | 完成一次积分兑换额外获得5000积分，在多个设备之间登录可获得1000积分，PC+手机
 | [ライフメディア](https://lifemedia.jp/entry/3675157/welcome){:target="_blank"} | 100积分=100円 | 注册到次月月末完成一次积分交换可额外获得400积分 |
 | [ポイントタウン](https://www.pointtown.com/invite?id=2vMRcRy5urtCx){:target="_blank"} | 1000积分=200円 | 注册后完善个人信息可以获得1000积分 |
-
-<!-- | [アメフリ](https://point.i2i.jp){:target="_blank"} | 单元格 | 注册后完善个人信息可以获得1000积分 | -->
+| [アメフリ](https://point.i2i.jp/register?inv=f143075){:target="_blank"} | 单元格 | 注册后完善个人信息可以获得1000积分 |
