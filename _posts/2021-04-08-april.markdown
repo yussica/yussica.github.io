@@ -1,0 +1,23 @@
+---
+layout: post
+title: 4月活动
+date: 2021-04-08 21:28:20.565 +0900
+last_modified_at: 2021-04-08 21:28:20.584 +0900
+category: 
+author: 
+tags: []
+summary: 
+permalink: /2021-april
+top: true
+---
+
+| 活动时间 | 活动 | 最佳消费金额(円) | 返还 |
+| :----: | :----: | :----: |
+| 2021年2月22日 月曜日～2021年5月21日 金曜日 | [みずほWallet 春の20％キャッシュバック](https://www.google.com/url?q=https://www.mizuhobank.co.jp/retail/campaign/wallet_newlife/index.html&sa=D&source=calendar&usd=2&usg=AOvVaw0nMerlfYDoPlNTq_DSYCEs) | 5000 | 1000円 |
+| 2021年 3月 1 日（月）〜 2021年 5月 31 日（月） | [コンビニでJCBカードのスマホ決済を体験しよう](https://www.google.com/url?q=https://www.jcb.co.jp/campaign/z03_convenience2103.html&sa=D&source=calendar&usd=2&usg=AOvVaw0vz4Jo6nVtmQJn1AjvFY8b) | 5000 | 1000円 |
+| 2021年3月5日 午後3時 ～ 4月30日 午後11時59分 | [PayPay銀行口座開設＆入金＆登録キャンペーン](https://paypay.ne.jp/notice/20210226/02/?_ga=2.255228488.1770985875.1617885564-1468376883.1611749421) |  | 4500円 |
+| 2021年3月2日（火）～4月10日（土） | [JCBプレモカードチャージ＆利用](https://www.google.com/url?q=https://www.jcb.co.jp/campaign/premo_charge2102.html%23campaign_detail&sa=D&source=calendar&usd=2&usg=AOvVaw2y8crHfhS2ba5GK4jUSoF_) | 3000 | 1000円 |
+| 2021年3月15日（月）0:00 ～ 2021年4月23日（金）23:59 | [新生活応援！LINE Pay春の50%還元 Apple Pay](https://www.google.com/url?q=https://linepay.line.me/promotion/apple-pay-202103.html&sa=D&source=calendar&usd=2&usg=AOvVaw1bp9fzQQm1KnkFenmUyTAo) | 2000 | 1000円 |
+| 2021年3月15日（月）0:00 ～ 2021年4月23日（金）23:59 | [新生活応援！LINE Pay春の50%還元 Google Pay](https://www.google.com/url?q=https://linepay.line.me/promotion/apple-pay-202103.html&sa=D&source=calendar&usd=2&usg=AOvVaw1bp9fzQQm1KnkFenmUyTAo) | 2000 | 1000円 |
+| 2021年3月22日(月) 0:00 ～ 2021年4月18日(日) 23:59:59 | [スターバックス カード](https://vdpro.jp/starbuckscard4.sej/) | 3000 | 500円礼品卡 |
+| 2021年4月1日(木) 10:00～2021年4月28日(水) 23:59 | [楽天ペイのSuica 春のわくわくチャージラリー](https://www.google.com/url?q=https://pay.rakuten.co.jp/campaign/2021/0401_suicastamp/&sa=D&source=calendar&usd=2&usg=AOvVaw2joazAqbeJiUpCCkecelgb) | 400 | 400乐天积分 |
