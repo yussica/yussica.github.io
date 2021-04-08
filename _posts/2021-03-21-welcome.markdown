@@ -21,7 +21,7 @@ tags: [活动]
 {% include googlecalendar.html %}
 
 百宝箱<br />
-[每日积分](/daily-points){:target="_blank"}  [每月积分](/monthly-points){:target="_blank"} [开户邀请](/invitation){:target="_blank"} [东京物价参考](https://docs.google.com/spreadsheets/d/1sqomoAxb6Ka-3Dwnr2MUsAorsqv5EQHFlGjt8Edo-nE/edit?usp=sharing){:target="_blank"}
+[每日积分](/daily-points){:target="_blank"}  [每月积分](/monthly-points){:target="_blank"} [摇钱树](/invitation){:target="_blank"} [东京物价参考](https://docs.google.com/spreadsheets/d/1sqomoAxb6Ka-3Dwnr2MUsAorsqv5EQHFlGjt8Edo-nE/edit?usp=sharing){:target="_blank"}
 
 
 
