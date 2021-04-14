@@ -9,6 +9,8 @@ full-width: true
 
 | 积分网站 | 邀请奖励 | 新手任务 |
 | :----: | :----: | :----: |
+| [Rakuten Rebates](https://www.rebates.jp/referrer?referrerid=6w2hTJ15FiE%3D){:target="_blank"} | 500积分=500円 | 注册后30日内首次使用购物满3000日元 |
+| [LINEショッピング](https://lin.ee/Q5exLeQ) | - | - |
 | [モッピー](https://pc.moppy.jp/entry/invite.php?invite=RUKHe194){:target="_blank"} | 300积分=300円 | 获得5000积分可额外获得2000积分 |
 | [ちょびリッチ](http://www.chobirich.com/cm/ad/?p=8224777069&i=4156068){:target="_blank"} | 500积分=250円 | [获得对应的积分可以额外获得奖励积分](https://www.chobirich.com/campaigns/200701_chobitomo_bonus/) |
 | [ECナビ](https://ecnavi.jp/invite/?id=g6tpd){:target="_blank"} | 1500积分=150円 | 需要完成本人认证，即电话号码验证 |

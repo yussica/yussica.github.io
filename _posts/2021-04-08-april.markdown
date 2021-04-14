@@ -20,5 +20,5 @@ top: true
 | 2021年3月19日～2021年5月16日 | [J-Coin Payのお支払いをすると、お支払金額の10%還元！](https://j-coin.jp/itsumonoomise/index.html){:target="_blank"} | 100,000 | 10,000円 |
 | 2021年3月15日（月）0:00 ～ 2021年4月23日（金）23:59 | [新生活応援！LINE Pay春の50%還元 Apple Pay](https://linepay.line.me/promotion/apple-pay-202103.html){:target="_blank"} | 2,000 | 1,000円 |
 | 2021年3月15日（月）0:00 ～ 2021年4月23日（金）23:59 | [新生活応援！LINE Pay春の50%還元 Google Pay](https://linepay.line.me/promotion/google-pay-202103.html){:target="_blank"} | 2,000 | 1,000円 |
-| 2021年3月22日(月) 0:00 ～ 2021年4月18日(日) 23:59:59 | [スターバックス カード](https://vdpro.jp/starbuckscard4.sej/) | 3,000 | 500円礼品卡 |
+| 2021年3月22日(月) 0:00 ～ 2021年4月18日(日) 23:59:59 | [スターバックス カード](https://vdpro.jp/starbuckscard4.sej/){:target="_blank"} | 3,000 | 500円礼品卡 |
 | 2021年4月1日(木) 10:00～2021年4月28日(水) 23:59 | [楽天ペイのSuica 春のわくわくチャージラリー](https://pay.rakuten.co.jp/campaign/2021/0401_suicastamp/){:target="_blank"} | 400 | 400乐天积分 |
