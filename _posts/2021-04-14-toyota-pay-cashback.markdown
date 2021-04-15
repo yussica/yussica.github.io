@@ -19,5 +19,8 @@ summary:
 
 3. 上月乐天市场购物满2万日元次月乐天信用卡可以返2%，使用第二条路径可以返3.7%
 
-ToyotaPay新用户返1000活动
+### 推荐使用方法
+可以给Apple Wallet Suica充值拿返点
+
+### ToyotaPay新用户返1000活动
 [![初回特典　TOYOTA Wallet残高（チャージ方法）の設定でTOYOTA Wallet残高1000円分プレゼント](https://toyota-wallet.com/news/other/first/images/mv.jpg?v=1)](https://toyota-wallet.com/news/payment/1911192/){:target="_blank"}
