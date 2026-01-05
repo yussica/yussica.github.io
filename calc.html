@@ -63,19 +63,19 @@
     <div class="section-title" id="t-sec-2">2. 所得扣除 (全项拆分)</div>
     <div class="grid">
         <div class="input-item"><label id="t-kiso">基础控除</label><input type="text" id="in-kiso" readonly></div>
-        <div class="input-item"><label id="t-fuyo">抚养扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
+        <div class="input-item"><label id="t-syakai">社会保险料扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-haigusha">配偶者（特别）控除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
+        <div class="input-item"><label id="t-fuyo">抚养扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
+        <div class="input-item"><label id="t-kifu">寄付金扣除（ふるさと納税）</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
+        <div class="input-item"><label id="t-seimei">生命保险料扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
+        <div class="input-item"><label id="t-zasson">杂损扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-tokutei">特定亲族特别控除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-shogai">障碍者控除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-kafu">寡妇/孤亲控除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-kinro">勤劳学生控除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
-        <div class="input-item"><label id="t-syakai">社会保险料扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-syokibo">小规模企业共济 (iDeCo)</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
-        <div class="input-item"><label id="t-seimei">生命保险料扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-jishin">地震保险料扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-iryo">医疗费扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
-        <div class="input-item"><label id="t-kifu">寄付金扣除（ふるさと納税）</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
-        <div class="input-item"><label id="t-zasson">杂损扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
     </div>
 
     <button class="calc-btn" id="t-btn" onclick="calculate()">计算</button>
@@ -184,7 +184,11 @@
         document.getElementById('res-itax').innerText = itax.toLocaleString();
         document.getElementById('res-rtax').innerText = rtax.toLocaleString();
         
-        const shakai = parseNum(document.querySelectorAll('.kojo')[7].value); // 社会保险料框索引
+        const shakai = parseNum(document.querySelectorAll('.kojo')[0].value); // 社会保险料框索引
+        console.log(shiharai);
+        console.log(itax);
+        console.log(rtax);
+        console.log(shakai);
         document.getElementById('res-takehome').innerText = Math.max(0, shiharai - itax - rtax - shakai).toLocaleString() + " JPY";
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
