@@ -3,28 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japan Tax Calculator - Professional Edition</title>
+    <title>Japan Tax Calculator - Final Precision Edition</title>
     <style>
-        :root { --primary: #2c3e50; --accent: #bc002d; --bg: #f4f7f9; }
-        body { font-family: 'Segoe UI', "Hiragino Kaku Gothic ProN", sans-serif; background: var(--bg); color: #333; padding: 15px; }
-        .container { max-width: 1000px; margin: 0 auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        :root { --primary: #2c3e50; --accent: #bc002d; --bg: #f4f7f9; --credit: #3498db; }
+        body { font-family: 'Segoe UI', "Hiragino Kaku Gothic ProN", sans-serif; background: var(--bg); color: #333; padding: 10px; line-height: 1.4; }
+        .container { max-width: 1050px; margin: 0 auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         .header-controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 2px solid var(--accent); padding-bottom: 15px; }
-        .lang-switcher button { cursor: pointer; padding: 6px 15px; margin-left: 5px; border: 1px solid #ddd; background: #fff; border-radius: 20px; transition: 0.3s; font-size: 0.85rem; }
+        .lang-switcher button { cursor: pointer; padding: 6px 15px; margin-left: 5px; border: 1px solid #ddd; background: #fff; border-radius: 20px; font-size: 0.85rem; }
         .lang-switcher button.active { background: var(--primary); color: white; border-color: var(--primary); }
-        .section-title { background: var(--primary); color: white; padding: 8px 15px; border-radius: 5px; margin: 25px 0 12px; font-weight: bold; font-size: 0.9rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
-        .input-item { display: flex; flex-direction: column; margin-bottom: 10px; }
-        label { font-size: 0.8rem; font-weight: bold; margin-bottom: 4px; color: #555; height: 1.2rem; overflow: hidden; }
-        input, select { padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.95rem; width: 100%; box-sizing: border-box; }
-        input:focus { border-color: var(--accent); outline: none; background: #fffdfd; }
-        input[readonly] { background: #f0f0f0; cursor: not-allowed; }
-        .calc-btn { width: 100%; padding: 16px; background: var(--accent); color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; margin-top: 25px; font-weight: bold; }
+        .section-title { background: var(--primary); color: white; padding: 8px 15px; border-radius: 5px; margin: 20px 0 10px; font-weight: bold; font-size: 0.9rem; }
+        .section-title.credit { background: var(--credit); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+        .input-item { display: flex; flex-direction: column; margin-bottom: 8px; }
+        label { font-size: 0.78rem; font-weight: bold; margin-bottom: 3px; color: #555; }
+        input, select { padding: 9px; border: 1px solid #ccc; border-radius: 5px; font-size: 0.95rem; width: 100%; box-sizing: border-box; }
+        .calc-btn { width: 100%; padding: 16px; background: var(--accent); color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; margin-top: 20px; font-weight: bold; }
         #result { margin-top: 25px; display: none; padding: 20px; border: 2px solid var(--primary); border-radius: 10px; background: #fff; }
         .res-table { width: 100%; border-collapse: collapse; }
         .res-table td { padding: 10px; border-bottom: 1px solid #eee; }
         .val { text-align: right; font-family: 'Consolas', monospace; font-weight: bold; font-size: 1.1rem; }
         .highlight { color: var(--accent); }
-        .note { font-size: 0.75rem; color: #7f8c8d; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -39,65 +37,80 @@
         </div>
     </div>
 
-    <div style="background:#fff3cd; padding:10px; border-radius:6px; margin-bottom:20px; font-size:0.85rem; border:1px solid #ffeeba;">
+    <div style="background:#fff3cd; padding:8px 12px; border-radius:6px; margin-bottom:15px; font-size:0.8rem; border:1px solid #ffeeba;">
         <span id="t-policy">适用方案：</span>
-        <select id="taxYear" onchange="updateUI()" style="width:auto; padding:3px; font-size:0.85rem;">
+        <select id="taxYear" onchange="updateUI()" style="width:auto; padding:2px;">
             <option value="2025">2025-2026 (New特例)</option>
             <option value="2027">2027+ (New基准)</option>
-            <option value="old">Pre-2024 (旧制)</option>
+            <option value="old">Pre-2024</option>
         </select>
     </div>
 
-    <div class="section-title" id="t-sec-1">1. 收入与所得</div>
+    <div class="section-title" id="t-sec1">1. 收入与所得</div>
     <div class="grid">
-        <div class="input-item">
-            <label id="t-shiharai">支付金额 (年收入总额)</label>
-            <input type="text" id="in-shiharai" oninput="handleFormat(this); updateUI();">
-        </div>
-        <div class="input-item">
-            <label id="t-gincome">给与所得金额 (所得额)</label>
-            <input type="text" id="out-gincome" readonly>
-        </div>
+        <div class="input-item"><label id="t-shiharai">支付金额</label><input type="text" id="in-shiharai" oninput="handleFormat(this); updateUI();" placeholder="9,622,469"></div>
+        <div class="input-item"><label id="t-gincome">给与所得金额</label><input type="text" id="out-gincome" readonly style="background:#eee"></div>
     </div>
 
-    <div class="section-title" id="t-sec-2">2. 所得扣除 (全项拆分)</div>
+    <div class="section-title" id="t-sec2">2. 全项所得扣除</div>
     <div class="grid">
-        <div class="input-item"><label id="t-kiso">基础控除</label><input type="text" id="in-kiso" readonly></div>
+        <div class="input-item"><label id="t-kiso">基础控除</label><input type="text" id="in-kiso" readonly style="background:#f8f9fa"></div>
         <div class="input-item"><label id="t-syakai">社会保险料扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
-        <div class="input-item"><label id="t-haigusha">配偶者（特别）控除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
-        <div class="input-item"><label id="t-fuyo">抚养扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
+        <div class="input-item"><label id="t-haigusha">配偶者控除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
+        <div class="input-item"><label id="t-fuyo">扶养控除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-kifu">寄付金扣除（ふるさと納税）</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-seimei">生命保险料扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-zasson">杂损扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
-        <div class="input-item"><label id="t-tokutei">特定亲族特别控除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
+        <div class="input-item"><label id="t-syokibo">小规模企业共济</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
+        <div class="input-item"><label id="t-jishin">地震保险料扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
+        <div class="input-item"><label id="t-tokutei">特定亲族扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-shogai">障碍者控除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-kafu">寡妇/孤亲控除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-kinro">勤劳学生控除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
-        <div class="input-item"><label id="t-syokibo">小规模企业共济 (iDeCo)</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
-        <div class="input-item"><label id="t-jishin">地震保险料扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
         <div class="input-item"><label id="t-iryo">医疗费扣除</label><input type="text" class="kojo" oninput="handleFormat(this)"></div>
     </div>
 
-    <button class="calc-btn" id="t-btn" onclick="calculate()">计算</button>
+    <div class="section-title credit" id="t-sec3">3. 税额扣除 (房贷)</div>
+    <div class="grid">
+        <div class="input-item"><label id="t-mortgage">住宅房贷扣除额</label><input type="text" id="in-mortgage" oninput="handleFormat(this)"></div>
+    </div>
+
+    <button class="calc-btn" id="t-btn_calc" onclick="calculate()">计算</button>
 
     <div id="result">
         <table class="res-table">
-            <tr><td id="t-res-inc">所得金额</td><td class="val" id="res-inc">0</td></tr>
-            <tr><td id="t-res-kojo">扣除合计</td><td class="val" id="res-kojo">0</td></tr>
-            <tr><td id="t-res-taxable">课税所得额 (千円切捨)</td><td class="val" id="res-taxable">0</td></tr>
-            <tr><td id="t-res-itax" class="highlight">所得税 (含复兴)</td><td class="val highlight" id="res-itax">0</td></tr>
-            <tr><td id="t-res-rtax">住民税预估 (约10%)</td><td class="val" id="res-rtax">0</td></tr>
-            <tr style="background:#f0fff4;"><td id="t-res-takehome"><strong>预计实际到手 (Take-home)</strong></td><td class="val" id="res-takehome" style="color:#27ae60; font-size:1.3rem;">0 JPY</td></tr>
+            <tr><td id="t-res_inc">给与所得金额</td><td class="val" id="res-inc">0</td></tr>
+            <tr><td id="t-res_kojo">所得扣除合计</td><td class="val" id="res-kojo">0</td></tr>
+            <tr><td id="t-res_taxable">课税所得金额</td><td class="val" id="res-taxable">0</td></tr>
+            <tr><td id="t-res_before">抵扣前所得税</td><td class="val" id="res-before">0</td></tr>
+            <tr><td id="t-res_credit">房贷抵扣额</td><td class="val" id="res-credit" style="color:var(--credit)">0</td></tr>
+            <tr><td id="t-res_itax">最终所得税</td><td class="val highlight" id="res-itax">0</td></tr>
+            <tr><td id="t-res_rtax">住民税预估</td><td class="val" id="res-rtax">0</td></tr>
+            <tr style="background:#f0fff4;"><td id="t-res_takehome">预计到手金额</td><td class="val" id="res-takehome" style="color:#27ae60; font-size:1.3rem;">0 JPY</td></tr>
         </table>
-        <div class="note" id="t-note">* 住民税基础控除自动按所得税基准减5万计算。实际以自治体通知为准。</div>
     </div>
 </div>
 
 <script>
     const i18n = {
-        zh: { title: "日本个税计算器", sec1: "1. 收入与所得", sec2: "2. 所得扣除项目 (全)", shiharai: "支付金额 (年收)", gincome: "给与所得金额", kiso: "基础控除 (自动)", fuyo: "抚养扣除", haigusha: "配偶者特别扣除", tokutei: "特定亲族特别扣除", shogai: "障碍者控除", kafu: "寡妇/孤亲控除", kinro: "勤劳学生控除", syakai: "社会保险料扣除", syokibo: "小规模企业共济", seimei: "生命保险料扣除", jishin: "地震保险料控除", iryo: "医疗费扣除", kifu: "寄付金扣除（ふるさと納税）", zasson: "杂损扣除", btn: "计算", resinc: "所得金额", reskojo: "扣除合计", restaxable: "课税所得额", resitax: "所得税 (含复兴)", resrtax: "住民税预估", restakehome: "预计实际到手", policy: "适用方案：", note: "* 住民税基础控除自动按所得税基准减5万计算。实际以自治体通知为准。" },
-        ja: { title: "日本所得税計算機", sec1: "1. 収入と所得金額", sec2: "2. 所得控除の全項目", shiharai: "支払金額 (年収)", gincome: "給与所得金額", kiso: "基礎控除 (自動)", fuyo: "扶養控除", haigusha: "配偶者特別控除", tokutei: "特定親族特別控除", shogai: "障害者控除", kafu: "寡婦、寡夫控除", kinro: "勤労学生控除", syakai: "社会保険料控除", syokibo: "小規模企業共済", seimei: "生命保険料控除", jishin: "地震保険料控除", iryo: "医療費控除", kifu: "寄附金控除（ふるさと納税）", zasson: "雑損控除", btn: "計算を実行する", resinc: "所得金額", reskojo: "所得控除合計", restaxable: "課税所得金額", resitax: "所得税 (復興税込)", resrtax: "住民税 (概算)", restakehome: "手取り金額", policy: "適用制度：", note: "* 住民税の基礎控除は所得税マイナス5万で自動計算されます。" },
-        en: { title: "Japan Tax Calculator", sec1: "1. Income", sec2: "2. All Deductions", shiharai: "Gross Salary", gincome: "Net Income", kiso: "Basic Deduction", fuyo: "Dependents", haigusha: "Spouse Deduction", tokutei: "Spec. Dependents", shogai: "Disability", kafu: "Widow/Single Parent", kinro: "Working Student", syakai: "Social Insurance", syokibo: "iDeCo / Mutual Aid", seimei: "Life Insurance", jishin: "Earthquake Ins.", iryo: "Medical Exp.", kifu: "Donations（ふるさと納税）", zasson: "Casualty Loss", btn: "Generate Report", resinc: "Net Income", reskojo: "Total Deductions", restaxable: "Taxable Income", resitax: "Income Tax", resrtax: "Resident Tax", restakehome: "Take-home Pay", policy: "Policy:", note: "* Resident Tax basic deduction is auto-adjusted (Income Tax -50k)." }
+        zh: {
+            title: "🇯🇵 日本个税计算器", sec1: "1. 收入与所得", sec2: "2. 全项所得扣除", sec3: "3. 税额扣除",
+            shiharai: "支付金额 (年收)", gincome: "所得额 (给与所得)", kiso: "基础控除", syakai: "社会保险料扣除", syokibo: "小规模企业共济", seimei: "生命保险料扣除", jishin: "地震保险料扣除", haigusha: "配偶者特别控除", fuyo: "扶养控除", tokutei: "特定亲族扣除", shogai: "障碍者控除", kafu: "寡妇/孤亲控除", kinro: "勤劳学生控除", iryo: "医疗费扣除", kifu: "寄付金扣除（ふるさと納税）", zasson: "杂损扣除", mortgage: "住宅房贷扣除额",
+            btn_calc: "计算",
+            res_inc: "所得额 (给与所得)", res_kojo: "所得扣除合计", res_taxable: "课税所得金额", res_before: "抵扣前所得税", res_credit: "房贷抵扣额", res_itax: "最终所得税 (含复兴)", res_rtax: "住民税预估", res_takehome: "预计到手金额", policy: "适用方案："
+        },
+        ja: {
+            title: "🇯🇵 日本所得税計算機", sec1: "1. 収入と所得金額", sec2: "2. 所得控除の全項目", sec3: "3. 税額控除",
+            shiharai: "支払金額 (年収)", gincome: "給与所得金額", kiso: "基礎控除", syakai: "社会保険料控除", syokibo: "小規模企業共済", seimei: "生命保険料控除", jishin: "地震保険料控除", haigusha: "配偶者特別控除", fuyo: "扶養控除", tokutei: "特定親族特別控除", shogai: "障害者控除", kafu: "寡婦、寡夫控除", kinro: "勤労学生控除", iryo: "医療費控除", kifu: "寄附金控除（ふるさと納税）", zasson: "雑損控除", mortgage: "住宅ローン控除額",
+            btn_calc: "計算結果を表示",
+            res_inc: "給与所得金額", res_kojo: "所得控除合計額", res_taxable: "課税所得金額", res_before: "控除前所得税", res_credit: "ローン控除額", res_itax: "所得税 (復興税込)", res_rtax: "住民税 (概算)", res_takehome: "手取り金額", policy: "適用制度："
+        },
+        en: {
+            title: "🇯🇵 Japan Tax Calculator", sec1: "1. Income", sec2: "2. All Deductions", sec3: "3. Tax Credits",
+            shiharai: "Gross Salary (Annual)", gincome: "Salary Income", kiso: "Basic Deduction", syakai: "Social Insurance", syokibo: "Mutual Aid", seimei: "Life Insurance", jishin: "Earthquake Ins.", haigusha: "Spouse Deduction", fuyo: "Dependents", tokutei: "Spec. Dependents", shogai: "Disability", kafu: "Single Parent", kinro: "Working Student", iryo: "Medical Exp.", kifu: "Donations（ふるさと納税）", zasson: "Casualty Loss", mortgage: "Mortgage Tax Credit",
+            btn_calc: "Generate Report",
+            res_inc: "Salary Income", res_kojo: "Total Deductions", res_taxable: "Taxable Income", res_before: "Pre-Credit Tax", res_credit: "Mortgage Credit", res_itax: "Final Income Tax", res_rtax: "Resident Tax", res_takehome: "Take-home Pay", policy: "Policy:"
+        }
     };
 
     function switchLang(lang) {
@@ -105,20 +118,23 @@
         document.querySelectorAll('.lang-switcher button').forEach(b => b.classList.remove('active'));
         document.getElementById('btn-' + lang).classList.add('active');
         const d = i18n[lang];
+        // 遍历更新所有标签
         for (let key in d) {
             const el = document.getElementById('t-' + key);
-            if (el) el.innerText = d[key];
+            if (el) {
+                el.innerText = d[key];
+                console.log(el.innerText);
+            }
         }
         document.documentElement.lang = lang;
+        if(document.getElementById('result').style.display === 'block') calculate();
     }
 
     function initLang() {
         const saved = localStorage.getItem('userLang');
-        if (saved) return switchLang(saved);
         const nav = navigator.language.toLowerCase();
-        if (nav.includes('ja')) switchLang('ja');
-        else if (nav.includes('zh')) switchLang('zh');
-        else switchLang('en');
+        const def = saved || (nav.includes('ja') ? 'ja' : (nav.includes('zh') ? 'zh' : 'en'));
+        switchLang(def);
     }
 
     function handleFormat(el) {
@@ -131,14 +147,12 @@
     function updateUI() {
         const shiharai = parseNum(document.getElementById('in-shiharai').value);
         const year = document.getElementById('taxYear').value;
-        
         let gKojo = 0;
         if (shiharai <= 1800000) gKojo = Math.max(shiharai * 0.4 - 100000, 550000);
         else if (shiharai <= 3600000) gKojo = shiharai * 0.3 + 80000;
         else if (shiharai <= 6600000) gKojo = shiharai * 0.2 + 440000;
         else if (shiharai <= 8500000) gKojo = shiharai * 0.1 + 1100000;
         else gKojo = 1950000;
-
         const income = Math.max(0, shiharai - gKojo);
         document.getElementById('out-gincome').value = Math.floor(income).toLocaleString();
 
@@ -160,36 +174,40 @@
         const shiharai = parseNum(document.getElementById('in-shiharai').value);
         const income = parseNum(document.getElementById('out-gincome').value);
         const kiso = parseNum(document.getElementById('in-kiso').value);
+        const mortgageCredit = parseNum(document.getElementById('in-mortgage').value);
         let otherKojo = 0;
         document.querySelectorAll('.kojo').forEach(el => otherKojo += parseNum(el.value));
         const totalKojo = otherKojo + kiso;
 
         let taxable = Math.floor(Math.max(0, income - totalKojo) / 1000) * 1000;
-        let tax = 0;
-        if (taxable <= 1950000) tax = taxable * 0.05;
-        else if (taxable <= 3300000) tax = taxable * 0.10 - 97500;
-        else if (taxable <= 6950000) tax = taxable * 0.20 - 427500;
-        else if (taxable <= 8999000) tax = taxable * 0.23 - 636000;
-        else if (taxable <= 17999000) tax = taxable * 0.33 - 1536000;
-        else if (taxable <= 39999000) tax = taxable * 0.40 - 2796000;
-        else tax = taxable * 0.45 - 4796000;
+        let bTax = 0;
+        if (taxable <= 1950000) bTax = taxable * 0.05;
+        else if (taxable <= 3300000) bTax = taxable * 0.10 - 97500;
+        else if (taxable <= 6950000) bTax = taxable * 0.20 - 427500;
+        else if (taxable <= 8999000) bTax = taxable * 0.23 - 636000;
+        else if (taxable <= 17999000) bTax = taxable * 0.33 - 1536000;
+        else if (taxable <= 39999000) bTax = taxable * 0.40 - 2796000;
+        else bTax = taxable * 0.45 - 4796000;
 
-        const itax = Math.floor(tax * 1.021);
-        const rtax = Math.floor(Math.max(0, income - (otherKojo + Math.max(0, kiso-50000))) * 0.10) + 5000;
+        let appIncomeCredit = Math.min(bTax, mortgageCredit);
+        let remCredit = mortgageCredit - appIncomeCredit;
+        let finalITax = Math.floor((bTax - appIncomeCredit) * 1.021);
+        
+        let rTaxable = Math.floor(Math.max(0, income - (otherKojo + Math.max(0, kiso-50000))) / 1000) * 1000;
+        let rTaxBase = Math.floor(rTaxable * 0.10) + 5000;
+        let appResidentCredit = Math.min(remCredit, 97500, rTaxBase);
+        let finalRTax = rTaxBase - appResidentCredit;
 
         document.getElementById('result').style.display = 'block';
         document.getElementById('res-inc').innerText = Math.floor(income).toLocaleString();
         document.getElementById('res-kojo').innerText = totalKojo.toLocaleString();
         document.getElementById('res-taxable').innerText = taxable.toLocaleString();
-        document.getElementById('res-itax').innerText = itax.toLocaleString();
-        document.getElementById('res-rtax').innerText = rtax.toLocaleString();
-        
-        const shakai = parseNum(document.querySelectorAll('.kojo')[0].value); // 社会保险料框索引
-        console.log(shiharai);
-        console.log(itax);
-        console.log(rtax);
-        console.log(shakai);
-        document.getElementById('res-takehome').innerText = Math.max(0, shiharai - itax - rtax - shakai).toLocaleString() + " JPY";
+        document.getElementById('res-before').innerText = Math.floor(bTax * 1.021).toLocaleString();
+        document.getElementById('res-credit').innerText = "-" + Math.floor(appIncomeCredit * 1.021).toLocaleString();
+        document.getElementById('res-itax').innerText = finalITax.toLocaleString();
+        document.getElementById('res-rtax').innerText = finalRTax.toLocaleString();
+        const shakai = parseNum(document.querySelectorAll('.kojo')[0].value);
+        document.getElementById('res-takehome').innerText = Math.max(0, shiharai - finalITax - finalRTax - shakai).toLocaleString() + " JPY";
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
 
