@@ -69,7 +69,7 @@ jobs:
       - name: Obfuscate cal.html
         # 重点：处理 _site 目录下的文件，因为那是最终部署的内容
         run: |
-          javascript-obfuscator ./_site/cal.html --output ./_site/cal.html \
+          javascript-obfuscator ./_site/calc.html --output ./_site/calc.html \
             --compact true \
             --self-defending true \
             --control-flow-flattening true \
