@@ -244,6 +244,18 @@
                     <td class="val" id="res-taxable">0</td>
                 </tr>
                 <tr>
+                    <td id="t-res-current-rate">当前所得税率档位</td>
+                    <td class="val" id="res-current-rate" style="color: #2980b9;">-</td>
+                </tr>
+                <tr id="row-bracket-gap" style="background:#f4f9ff;">
+                    <td id="t-res-bracket-gap">距离下一税率档位剩余额度</td>
+                    <td class="val" id="res-bracket-gap" style="color: #27ae60; font-weight: bold;">-</td>
+                </tr>
+                <tr id="row-tax-bracket" style="background:#fffaf0;">
+                    <td id="t-res-bracket-info">边际税率档位提醒</td>
+                    <td class="val" id="res-bracket-info" style="font-size: 0.9rem;">-</td>
+                </tr>
+                <tr>
                     <td id="t-res_itax">最终所得税</td>
                     <td class="val highlight" id="res-itax">0</td>
                 </tr>
@@ -305,19 +317,22 @@
                 title: "🇯🇵 日本个税计算器", sec1: "1. 收入与所得", sec2: "2. 全项所得扣除", sec3: "3. 税额扣除",
                 shiharai: "支付金额 (年收)", gincome: "所得额 (给与所得)", kiso: "基础控除", syakai: "社会保险料扣除", syokibo: "小规模企业共济", seimei: "生命保险料扣除", jishin: "地震保险料扣除", haigusha: "配偶者特别控除", fuyo: "扶养控除", tokutei: "特定亲族扣除", shogai: "障碍者控除", kafu: "寡妇/孤亲控除", kinro: "勤劳学生控除", iryo: "医疗费扣除", kifu: "寄付金扣除（ふるさと納税）", zasson: "杂损扣除", mortgage: "住宅房贷扣除额",
                 btn_calc: "计算",
-                res_inc: "所得额 (给与所得)", res_kojo: "所得扣除合计", res_taxable: "课税所得金额", res_itax: "最终所得税 (含复兴)", res_rtax: "住民税预估（10%）", "res-tax-sum": "所得税 + 住民税 合计", res_furusato: "家乡纳税(ふるさと納税)推荐额度", res_takehome: "预计到手金额", policy: "适用方案：", f_note: "* 推荐额度为在只需负担2000日元基础上的最大抵扣估算额。", "link-tax": "确定申告", "link-remit": "国际送金", "link-one": "特例申请", "link-buy": "纳税购买平台"
+                res_inc: "所得额 (给与所得)", res_kojo: "所得扣除合计", res_taxable: "课税所得金额", "res-current-rate": "当前所得税率档位",
+                "res-bracket-gap": "距下一档位剩余额度 (控税空间)", "res-bracket-info": "边际税率档位 (695w临界点)", res_itax: "最终所得税 (含复兴)", res_rtax: "住民税预估（10%）", "res-tax-sum": "所得税 + 住民税 合计", res_furusato: "家乡纳税(ふるさと納税)推荐额度", res_takehome: "预计到手金额", policy: "适用方案：", f_note: "* 推荐额度为在只需负担2000日元基础上的最大抵扣估算额。", "link-tax": "确定申告", "link-remit": "国际送金", "link-one": "特例申请", "link-buy": "纳税购买平台"
             },
             ja: {
                 title: "🇯🇵 日本所得税計算機", sec1: "1. 収入と所得金額", sec2: "2. 所得控除の全項目", sec3: "3. 税額控除",
                 shiharai: "支払金額 (年収)", gincome: "給与所得金額", kiso: "基礎控除", syakai: "社会保険料控除", syokibo: "小規模企業共済", seimei: "生命保険料控除", jishin: "地震保険料控除", haigusha: "配偶者特別控除", fuyo: "扶養控除", tokutei: "特定親族特別控除", shogai: "障害者控除", kafu: "寡婦、寡夫控除", kinro: "勤労学生控除", iryo: "医療費控除", kifu: "寄附金控除（ふるさと納税）", zasson: "雑損控除", mortgage: "住宅ローン控除額",
                 btn_calc: "計算結果を表示",
-                res_inc: "給与所得金額", res_kojo: "所得控除合計額", res_taxable: "課税所得金額", res_itax: "所得税 (復興税込)", res_rtax: "住民税 (概算10%)", "res-tax-sum": "所得税・住民税 合計", res_furusato: "ふるさと納税の目安額", res_takehome: "手取り金額", policy: "適用制度：", f_note: "* 目安額は実質負担2,000円で済む寄附上限の推計です。", "link-tax": "確定申告", "link-remit": "国際送金", "link-one": "ワンストップ特例", "link-buy": "ふるさと納税サイト"
+                res_inc: "給与所得金額", res_kojo: "所得控除合計額", res_taxable: "課税所得金額", "res-current-rate": "適用所得税率（現在の所得区分）",
+                "res-bracket-gap": "次得税率までの残額 (節税枠)", "res-bracket-info": "適用税率の境界線 (695万円)", res_itax: "所得税 (復興税込)", res_rtax: "住民税 (概算10%)", "res-tax-sum": "所得税・住民税 合計", res_furusato: "ふるさと納税の目安額", res_takehome: "手取り金額", policy: "適用制度：", f_note: "* 目安額は実質負担2,000円で済む寄附上限の推計です。", "link-tax": "確定申告", "link-remit": "国際送金", "link-one": "ワンストップ特例", "link-buy": "ふるさと納税サイト"
             },
             en: {
                 title: "🇯🇵 Japan Tax Calculator", sec1: "1. Income", sec2: "2. All Deductions", sec3: "3. Tax Credits",
                 shiharai: "Gross Salary (Annual)", gincome: "Salary Income", kiso: "Basic Deduction", syakai: "Social Insurance", syokibo: "Mutual Aid", seimei: "Life Insurance", jishin: "Earthquake Ins.", haigusha: "Spouse Deduction", fuyo: "Dependents", tokutei: "Spec. Dependents", shogai: "Disability", kafu: "Single Parent", kinro: "Working Student", iryo: "Medical Exp.", kifu: "Donations（ふるさと納税）", zasson: "Casualty Loss", mortgage: "Mortgage Tax Credit",
                 btn_calc: "Generate Report",
-                res_inc: "Salary Income", res_kojo: "Total Deductions", res_taxable: "Taxable Income", res_itax: "Final Income Tax", res_rtax: "Resident Tax（10%）", "res-tax-sum": "Total Tax (Income + Resident)", res_furusato: "Furusato Nozei Limit", res_takehome: "Take-home Pay", policy: "Policy:", f_note: "* Estimation for max donation with 2,000 JPY out-of-pocket cost.", "link-tax": "Final Tax Return", "link-remit": "Remittance", "link-one": "One-stop Application", "link-buy": "Donation Portals"
+                res_inc: "Salary Income", res_kojo: "Total Deductions", res_taxable: "Taxable Income", "res-current-rate": "Current Income Tax Bracket",
+                "res-bracket-gap": "Gap to Next Tax Bracket", "res-bracket-info": "Tax Bracket Info (6.95M limit)", res_itax: "Final Income Tax", res_rtax: "Resident Tax（10%）", "res-tax-sum": "Total Tax (Income + Resident)", res_furusato: "Furusato Nozei Limit", res_takehome: "Take-home Pay", policy: "Policy:", f_note: "* Estimation for max donation with 2,000 JPY out-of-pocket cost.", "link-tax": "Final Tax Return", "link-remit": "Remittance", "link-one": "One-stop Application", "link-buy": "Donation Portals"
             }
         };
 
@@ -377,6 +392,17 @@
         }
 
         function calculate() {
+            // 定义日本所得税率阶梯 (2026年标准)
+            const brackets = [
+                { limit: 1950000, rate: "5%" },
+                { limit: 3300000, rate: "10%" },
+                { limit: 6950000, rate: "20%" },
+                { limit: 8999000, rate: "23%" },
+                { limit: 17999000, rate: "33%" },
+                { limit: 39999000, rate: "40%" },
+                { limit: Infinity, rate: "45%" }
+            ];
+
             const shiharai = parseNum(document.getElementById('in-shiharai').value);
             const income = parseNum(document.getElementById('out-gincome').value);
             const kiso = parseNum(document.getElementById('in-kiso').value);
@@ -387,6 +413,67 @@
 
             // 1. 所得税计算
             let taxable = Math.floor(Math.max(0, income - totalKojo) / 1000) * 1000;
+
+            let currentRate = "5%";
+            let currentRateIndex = 0;
+            let nextLimit = 1950000;
+
+            // 判定当前所处档位
+            for (let i = 0; i < brackets.length; i++) {
+                currentRateIndex++;
+                if (taxable <= brackets[i].limit) {
+                    currentRate = brackets[i].rate;
+                    nextLimit = brackets[i].limit;
+                    break;
+                }
+            }
+
+            // 渲染当前税率
+            document.getElementById('res-current-rate').innerText = currentRate;
+
+            // 计算距离下一档位的差距
+            const gap = nextLimit - taxable;
+            const gapEl = document.getElementById('res-bracket-gap');
+
+            if (nextLimit === Infinity) {
+                gapEl.innerText = "MAX";
+            } else {
+                let nextRate = brackets[currentRateIndex].rate;
+                if (gap < 80000) {
+                    gapEl.style.color = "#ff0000";
+                    gapEl.innerText = "🚨 🚑 🚨 " + gap.toLocaleString() + " JPY(" + nextRate + ")";
+                } else if (gap < 240000) {
+                    gapEl.style.color = "#ff0000";
+                    gapEl.innerText = "🚨 🚑 " + gap.toLocaleString() + " JPY(" + nextRate + ")";
+                } else if (gap < 240000) {
+                    gapEl.style.color = "#ff0000";
+                    gapEl.innerText = "🚨 " + gap.toLocaleString() + " JPY(" + nextRate + ")";
+                } else if (gap < 800000) {
+                    gapEl.style.color = "#e67e22";
+                    gapEl.innerText = "⚠️ " + gap.toLocaleString() + " JPY(" + nextRate + ")";
+                } else {
+                    gapEl.style.color = "#27ae60";
+                    gapEl.innerText = "🏦 " + gap.toLocaleString() + " JPY(" + nextRate + ")";
+                }
+            }
+
+            const bracketEl = document.getElementById('res-bracket-info');
+            const lang = localStorage.getItem('userLang') || 'zh';
+
+            if (taxable <= 6950000) {
+                const diff = 6950000 - taxable;
+                bracketEl.style.color = "#27ae60"; // 绿色表示安全
+                if (lang === 'zh') bracketEl.innerText = `安全 (距23%档位还差 ${diff.toLocaleString()} JPY)`;
+                else if (lang === 'ja') bracketEl.innerText = `安全 (23%枠まであと ${diff.toLocaleString()} 円)`;
+                else bracketEl.innerText = `Safe (${diff.toLocaleString()} JPY under 23% bracket)`;
+            } else {
+                const over = taxable - 6950000;
+                bracketEl.style.color = "#bc002d"; // 红色表示超额
+                if (lang === 'zh') bracketEl.innerText = `注意 (超出23%档位部分: ${over.toLocaleString()} JPY)`;
+                else if (lang === 'ja') bracketEl.innerText = `注意 (23%枠を超えた分: ${over.toLocaleString()} 円)`;
+                else bracketEl.innerText = `Alert (${over.toLocaleString()} JPY in 23% bracket)`;
+            }
+
             let bTax = 0;
             let rate = 0.05;
             if (taxable <= 1950000) { bTax = taxable * 0.05; rate = 0.05; }
