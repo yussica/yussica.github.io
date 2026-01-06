@@ -65,10 +65,12 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-darwin-23
+  x86_64-linux
 
 DEPENDENCIES
   jekyll (~> 4.2.0)
   jekyll-remote-theme
 
 BUNDLED WITH
-   2.2.15
+   2.4.13
