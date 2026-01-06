@@ -182,19 +182,19 @@
             </select>
         </div>
 
-        <div class="section-title" id="t-sec1">1. 收入与所得</div>
+        <div class="section-title" id="t-sec1">1. 收入</div>
         <div class="grid">
-            <div class="input-item"><label id="t-shiharai">支付金额</label><input type="text" id="in-shiharai"
+            <div class="input-item"><label id="t-shiharai">税前年收</label><input type="text" id="in-shiharai"
                     oninput="handleFormat(this); updateUI();" placeholder="7,000,000"></div>
             <div class="input-item">
-                <label id="t-stock-option">期权行权所得 (Stock Option Gain)</label>
+                <label id="t-stock-option">期权行权 (Stock Option)</label>
                 <input type="text" id="in-so-gain" oninput="handleFormat(this); updateUI();" placeholder="100,000">
             </div>
-            <div class="input-item"><label id="t-gincome">所得额</label><input type="text" id="out-gincome" readonly
+            <div class="input-item"><label id="t-gincome">应缴税年收</label><input type="text" id="out-gincome" readonly
                     style="background:#eee"></div>
         </div>
 
-        <div class="section-title" id="t-sec2">2. 全项所得扣除</div>
+        <div class="section-title" id="t-sec2">2. 免税项</div>
         <div class="grid">
             <div class="input-item"><label id="t-kiso">基础控除</label><input type="text" id="in-kiso" readonly
                     style="background:#f8f9fa"></div>
@@ -226,7 +226,7 @@
                     oninput="handleFormat(this)"></div>
         </div>
 
-        <div class="section-title credit" id="t-sec3">3. 税额扣除 & 期权</div>
+        <div class="section-title credit" id="t-sec3">3. 其他免税项</div>
         <div class="grid">
             <div class="input-item"><label id="t-mortgage">房贷抵扣额</label><input type="text" id="in-mortgage"
                     oninput="handleFormat(this)"></div>
@@ -245,15 +245,15 @@
                     <td class="val" id="res-kojo">0</td>
                 </tr>
                 <tr>
-                    <td id="t-res_taxable">课税所得金额</td>
+                    <td id="t-res_taxable">实际应纳税年收</td>
                     <td class="val" id="res-taxable">0</td>
                 </tr>
                 <tr>
-                    <td id="t-res-current-rate">当前所得税率档位</td>
+                    <td id="t-res-current-rate">当前所得税率</td>
                     <td class="val" id="res-current-rate" style="color: #2980b9;">-</td>
                 </tr>
                 <tr id="row-bracket-gap" style="background:#f4f9ff;">
-                    <td id="t-res-bracket-gap">距离下一税率档位剩余额度</td>
+                    <td id="t-res-bracket-gap">距下一税率剩余额度</td>
                     <td class="val" id="res-bracket-gap" style="color: #27ae60; font-weight: bold;">-</td>
                 </tr>
                 <tr id="row-tax-bracket" style="background:#fffaf0;">
@@ -261,7 +261,7 @@
                     <td class="val" id="res-bracket-info" style="font-size: 0.9rem;">-</td>
                 </tr>
                 <tr>
-                    <td id="t-res_itax">最终所得税</td>
+                    <td id="t-res_itax">最终个税</td>
                     <td class="val highlight" id="res-itax">0</td>
                 </tr>
                 <tr>
@@ -269,15 +269,15 @@
                     <td class="val highlight" id="res-rtax">0</td>
                 </tr>
                 <tr>
-                    <td id="t-res-tax-sum">所得税 + 住民税 合计</td>
+                    <td id="t-res-tax-sum">个税 + 住民税 合计</td>
                     <td class="val highlight" id="res-tax-sum">0</td>
                 </tr>
                 <tr style="background:#f0fff4; border-top:2px solid #27ae60;">
-                    <td id="t-res_furusato"><strong>家乡纳税(ふるさと納税)推荐额度</strong></td>
+                    <td id="t-res_furusato"><strong>故乡税(ふるさと納税)推荐额度</strong></td>
                     <td class="val f-highlight" id="res-furusato">0</td>
                 </tr>
                 <tr style="background:#f0fff4;">
-                    <td id="t-res_takehome">预计到手金额</td>
+                    <td id="t-res_takehome">税后年收</td>
                     <td class="val" id="res-takehome" style="color:#27ae60; font-size:1.3rem;">0 JPY</td>
                 </tr>
             </table>
@@ -327,17 +327,17 @@
     <script>
         const i18n = {
             zh: {
-                title: "🇯🇵 日本个税计算器", sec1: "1. 收入与所得", sec2: "2. 全项所得扣除", sec3: "3. 税额扣除",
-                shiharai: "支付金额 (年收)", "stock-option": "期权行权所得 (Stock Option)", gincome: "所得额 (给与所得)", kiso: "基础控除", syakai: "社会保险料扣除", syokibo: "小规模企业共济", seimei: "生命保险料扣除", jishin: "地震保险料扣除", haigusha: "配偶者特别控除", fuyo: "扶养控除", tokutei: "特定亲族扣除", shogai: "障碍者控除", kafu: "寡妇/孤亲控除", kinro: "勤劳学生控除", iryo: "医疗费扣除", kifu: "寄付金扣除（ふるさと納税）", zasson: "杂损扣除", mortgage: "住宅房贷扣除额",
+                title: "🇯🇵 日本个税计算器", sec1: "1. 收入", sec2: "2. 免税项", sec3: "3. 其他免税项",
+                shiharai: "税前年收", "stock-option": "期权行权 (Stock Option)", gincome: "应缴税年收", kiso: "基础控除", syakai: "社会保险料扣除", syokibo: "小规模企业共济", seimei: "生命保险料扣除", jishin: "地震保险料扣除", haigusha: "配偶者特别控除", fuyo: "扶养控除", tokutei: "特定亲族扣除", shogai: "障碍者控除", kafu: "寡妇/孤亲控除", kinro: "勤劳学生控除", iryo: "医疗费扣除", kifu: "寄付金扣除（ふるさと納税）", zasson: "杂损扣除", mortgage: "住宅房贷扣除额",
                 btn_calc: "计算",
-                res_inc: "所得额 (给与所得)", res_kojo: "所得扣除合计", res_taxable: "课税所得金额", "res-current-rate": "当前所得税率档位",
-                "res-bracket-gap": "距下一档位剩余额度 (控税空间)", "res-bracket-info": "边际税率档位 (695w临界点)", res_itax: "最终所得税 (含复兴)", res_rtax: "住民税预估（10%）", "res-tax-sum": "所得税 + 住民税 合计", res_furusato: "家乡纳税(ふるさと納税)推荐额度", res_takehome: "预计到手金额", policy: "适用方案：", f_note: "* 推荐额度为在只需负担2000日元基础上的最大抵扣估算额。", "link-tax": "确定申告", "link-remit": "国际送金", "link-one": "特例申请", "link-buy": "纳税购买平台"
+                res_inc: "应缴税年收", res_kojo: "免税项合计", res_taxable: "实际应纳税年收", "res-current-rate": "当前所得税率",
+                "res-bracket-gap": "距下一税率剩余额度", "res-bracket-info": "距 695万 年收", res_itax: "最终个税", res_rtax: "住民税预估（10%）", "res-tax-sum": "个税 + 住民税 合计", res_furusato: "故乡税(ふるさと納税)推荐额度", res_takehome: "税后年收", policy: "适用方案：", f_note: "* 推荐额度为在只需负担2000日元基础上的最大抵扣估算额。", "link-tax": "确定申告", "link-remit": "国际送金", "link-one": "特例申请", "link-buy": "纳税购买平台"
             },
             ja: {
                 title: "🇯🇵 日本所得税計算機", sec1: "1. 収入と所得金額", sec2: "2. 所得控除の全項目", sec3: "3. 税額控除",
                 shiharai: "支払金額 (年収)", "stock-option": "ストックオプション行使所得", gincome: "給与所得金額", kiso: "基礎控除", syakai: "社会保険料控除", syokibo: "小規模企業共済", seimei: "生命保険料控除", jishin: "地震保険料控除", haigusha: "配偶者特別控除", fuyo: "扶養控除", tokutei: "特定親族特別控除", shogai: "障害者控除", kafu: "寡婦、寡夫控除", kinro: "勤労学生控除", iryo: "医療費控除", kifu: "寄附金控除（ふるさと納税）", zasson: "雑損控除", mortgage: "住宅ローン控除額",
                 btn_calc: "計算結果を表示",
-                res_inc: "給与所得金額", res_kojo: "所得控除合計額", res_taxable: "課税所得金額", "res-current-rate": "適用所得税率（現在の所得区分）",
+                res_inc: "給与所得金額", res_kojo: "所得控除合計額", res_taxable: "課税所得金額", "res-current-rate": "適用所得税率",
                 "res-bracket-gap": "次得税率までの残額 (節税枠)", "res-bracket-info": "適用税率の境界線 (695万円)", res_itax: "所得税 (復興税込)", res_rtax: "住民税 (概算10%)", "res-tax-sum": "所得税・住民税 合計", res_furusato: "ふるさと納税の目安額", res_takehome: "手取り金額", policy: "適用制度：", f_note: "* 目安額は実質負担2,000円で済む寄附上限の推計です。", "link-tax": "確定申告", "link-remit": "国際送金", "link-one": "ワンストップ特例", "link-buy": "ふるさと納税サイト"
             },
             en: {
@@ -408,7 +408,7 @@
 
         // 触发庆祝动画
         function fireCelebration() {
-            const duration = 1.2 * 1000; // 动画持续3秒
+            const duration = 0.3 * 1000; // 动画持续3秒
             const end = Date.now() + duration;
 
             (function frame() {
@@ -484,13 +484,13 @@
             } else {
                 let nextRate = brackets[currentRateIndex].rate;
                 if (gap < 80000) {
-                    gapEl.style.color = "#ff0000";
+                    gapEl.style.color = "#bc002d";
                     gapEl.innerText = "🚨 🚑 🚨 " + gap.toLocaleString() + " JPY(" + nextRate + ")";
                 } else if (gap < 240000) {
-                    gapEl.style.color = "#ff0000";
+                    gapEl.style.color = "#bc002d";
                     gapEl.innerText = "🚨 🚑 " + gap.toLocaleString() + " JPY(" + nextRate + ")";
                 } else if (gap < 240000) {
-                    gapEl.style.color = "#ff0000";
+                    gapEl.style.color = "#bc002d";
                     gapEl.innerText = "🚨 " + gap.toLocaleString() + " JPY(" + nextRate + ")";
                 } else if (gap < 800000) {
                     gapEl.style.color = "#e67e22";
@@ -557,7 +557,10 @@
             document.getElementById('res-rtax').innerText = finalRTax.toLocaleString();
             document.getElementById('res-furusato').innerText = Math.floor(furusatoLimit).toLocaleString() + " JPY";
             const shakai = parseNum(document.querySelectorAll('.kojo')[0].value);
-            document.getElementById('res-takehome').innerText = Math.max(0, shiharai - finalITax - finalRTax - shakai).toLocaleString() + " JPY";
+            const takeHomeValue = Math.max(0, shiharai - finalITax - finalRTax - shakai);
+            const takeHomeValueMonthly = Math.max(0, takeHomeValue / 12);
+            const month_locale = lang == 'en' ? 'M' : "月";
+            document.getElementById('res-takehome').innerText = takeHomeValue.toLocaleString() + " JPY(" + takeHomeValueMonthly.toLocaleString() + " JYP/" + month_locale + ")";
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 
             fireCelebration();
