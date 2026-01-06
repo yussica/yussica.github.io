@@ -548,18 +548,19 @@
             // 限度额 ≒ (住民税所得割额 × 0.2) / (0.9 - 所得税率 × 1.021) + 2000
             let rIncomePart = rTaxable * 0.10; // 住民税所得割
             let furusatoLimit = (rIncomePart * 0.2) / (0.9 - rate * 1.021) + 2000;
+            let furusatoLimitMonth = Math.floor(finalRTax / 12);
+            const month_locale = lang == 'en' ? 'M' : "月";
 
             document.getElementById('result').style.display = 'block';
-            document.getElementById('res-inc').innerText = Math.floor(income).toLocaleString();
-            document.getElementById('res-kojo').innerText = totalKojo.toLocaleString();
-            document.getElementById('res-taxable').innerText = taxable.toLocaleString();
-            document.getElementById('res-itax').innerText = finalITax.toLocaleString();
-            document.getElementById('res-rtax').innerText = finalRTax.toLocaleString();
+            document.getElementById('res-inc').innerText = Math.floor(income).toLocaleString() + " JPY";
+            document.getElementById('res-kojo').innerText = totalKojo.toLocaleString() + " JPY";
+            document.getElementById('res-taxable').innerText = taxable.toLocaleString() + " JPY";
+            document.getElementById('res-itax').innerText = finalITax.toLocaleString() + " JPY";
+            document.getElementById('res-rtax').innerText = finalRTax.toLocaleString()+ " JPY(" + furusatoLimitMonth.toLocaleString() + " JYP/" + month_locale + ")";
             document.getElementById('res-furusato').innerText = Math.floor(furusatoLimit).toLocaleString() + " JPY";
             const shakai = parseNum(document.querySelectorAll('.kojo')[0].value);
             const takeHomeValue = Math.max(0, shiharai - finalITax - finalRTax - shakai);
             const takeHomeValueMonthly = Math.max(0, takeHomeValue / 12);
-            const month_locale = lang == 'en' ? 'M' : "月";
             document.getElementById('res-takehome').innerText = takeHomeValue.toLocaleString() + " JPY(" + takeHomeValueMonthly.toLocaleString() + " JYP/" + month_locale + ")";
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 
