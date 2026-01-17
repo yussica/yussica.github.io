@@ -147,3 +147,12 @@ defaults:
       categories: ""
       tags: ""
       top: false
+
+jekyll_admin:
+  hidden_links:
+    # - posts
+    # - pages
+    # - staticfiles
+    # - datafiles
+    # - configuration
+  homepage: "pages"
