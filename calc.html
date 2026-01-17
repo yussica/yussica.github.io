@@ -338,7 +338,7 @@
                 shiharai: "支払金額 (年収)", "stock-option": "ストックオプション行使所得", gincome: "給与所得金額", kiso: "基礎控除", syakai: "社会保険料控除", syokibo: "小規模企業共済", seimei: "生命保険料控除", jishin: "地震保険料控除", haigusha: "配偶者特別控除", fuyo: "扶養控除", tokutei: "特定親族特別控除", shogai: "障害者控除", kafu: "寡婦、寡夫控除", kinro: "勤労学生控除", iryo: "医療費控除", kifu: "寄附金控除（ふるさと納税）", zasson: "雑損控除", mortgage: "住宅ローン控除額",
                 btn_calc: "計算結果を表示",
                 res_inc: "給与所得金額", res_kojo: "所得控除合計額", res_taxable: "課税所得金額", "res-current-rate": "適用所得税率",
-                "res-bracket-gap": "次得税率までの残額 (節税枠)", "res-bracket-info": "適用税率の境界線 (695万円)", res_itax: "所得税 (復興税込)", res_rtax: "住民税 (概算10%)", "res-tax-sum": "所得税・住民税 合計", res_furusato: "ふるさと納税の目安額", res_takehome: "手取り金額", policy: "適用制度：", f_note: "* 目安額は実質負担2,000円で済む寄附上限の推計です。", "link-tax": "確定申告", "link-remit": "国際送金", "link-one": "ワンストップ特例", "link-buy": "ふるさと納税サイト"
+                "res-bracket-gap": "次得税率までの残額 (節税枠)", "res-bracket-info": "695万円まで", res_itax: "所得税 (復興税込)", res_rtax: "住民税 (概算10%)", "res-tax-sum": "所得税・住民税 合計", res_furusato: "ふるさと納税の目安額", res_takehome: "手取り金額", policy: "適用制度：", f_note: "* 目安額は実質負担2,000円で済む寄附上限の推計です。", "link-tax": "確定申告", "link-remit": "国際送金", "link-one": "ワンストップ特例", "link-buy": "ふるさと納税サイト"
             },
             en: {
                 title: "🇯🇵 Japan Tax Calculator", sec1: "1. Income", sec2: "2. All Deductions", sec3: "3. Tax Credits",
@@ -448,6 +448,8 @@
             ];
 
             const shiharai = parseNum(document.getElementById('in-shiharai').value);
+            const soGain = parseNum(document.getElementById('in-so-gain').value);
+            const totalIncome = shiharai + soGain;
             const income = parseNum(document.getElementById('out-gincome').value);
             const kiso = parseNum(document.getElementById('in-kiso').value);
             const mortgageCredit = parseNum(document.getElementById('in-mortgage').value);
@@ -559,9 +561,10 @@
             document.getElementById('res-rtax').innerText = finalRTax.toLocaleString()+ " JPY(" + furusatoLimitMonth.toLocaleString() + " JYP/" + month_locale + ")";
             document.getElementById('res-furusato').innerText = Math.floor(furusatoLimit).toLocaleString() + " JPY";
             const shakai = parseNum(document.querySelectorAll('.kojo')[0].value);
-            const takeHomeValue = Math.max(0, shiharai - finalITax - finalRTax - shakai);
+            const takeHomeValue = Math.max(0, totalIncome - finalITax - finalRTax - shakai);
+            const takeHomeValueRate = totalIncome > 0 ? Math.floor(takeHomeValue/totalIncome*10000)/100 : 0;
             const takeHomeValueMonthly = Math.max(0, takeHomeValue / 12);
-            document.getElementById('res-takehome').innerText = takeHomeValue.toLocaleString() + " JPY(" + takeHomeValueMonthly.toLocaleString() + " JYP/" + month_locale + ")";
+            document.getElementById('res-takehome').innerText = takeHomeValue.toLocaleString() + " JPY(" + takeHomeValueRate + "% | " + takeHomeValueMonthly.toLocaleString() + " JYP/" + month_locale + ")";
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 
             fireCelebration();
