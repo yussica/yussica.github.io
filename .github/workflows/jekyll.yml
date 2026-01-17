@@ -54,31 +54,20 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install javascript-obfuscator
-        run: npm install -g javascript-obfuscator
-
-      - name: Obfuscate Output Files
-        run: |
-          find ./_site -name "*.html" -exec javascript-obfuscator {} --output {} \
-            --compact true \
-            --self-defending true \
-            --string-array true \
-            --string-array-encoding 'base64' \
-            --control-flow-flattening true \;
-
-
       - name: Install html-minifier-terser
         run: npm install -g html-minifier-terser
 
-      - name: Obfuscate cal.html
+      - name: Obfuscate *.html
         # 重点：处理 _site 目录下的文件，因为那是最终部署的内容
         run: |
           html-minifier-terser \
           --collapse-whitespace \
           --remove-comments \
+          --decode-entities \
           --minify-css true \
           --minify-js true \
-          -o ./_site/calc.html ./_site/calc.html
+          --process-conditional-comments true \
+          -o {} {} \;
       # --- 混淆结束 ---
 
       - name: Upload artifact
