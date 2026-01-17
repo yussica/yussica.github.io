@@ -1,0 +1,198 @@
+---
+layout: page
+title: 日本银行优待对比门户
+full-width: true
+---
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+<div class="container-fluid py-4 px-md-5">
+  <div class="row mb-4 align-items-end">
+    <div class="col-md-7">
+      <h2 class="fw-bold"><i class="bi bi-bank2 text-primary me-2"></i> 日本银行优待对比</h2>
+      <p class="text-muted mb-0 small">点击银行 Logo 跳转官网，点击标签跳转手续费详情页。</p>
+    </div>
+    <div class="col-md-5 text-end">
+      <div class="input-group">
+        <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+        <input type="text" id="bankSearch" class="form-control border-start-0 ps-0 shadow-none" placeholder="搜索银行名称（如：楽天、SBI）...">
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive shadow-sm rounded-3 border">
+    <table class="table table-hover align-middle mb-0" id="bankTable">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">银行名 <i class="bi bi-arrow-down-up ms-1"></i></th>
+          <th onclick="sortTable(1)">免费转账 <i class="bi bi-arrow-down-up ms-1"></i></th>
+          <th onclick="sortTable(2)">ATM <i class="bi bi-arrow-down-up ms-1"></i></th>
+          <th onclick="sortTable(3)">活期利率 <i class="bi bi-arrow-down-up ms-1"></i></th>
+          <th>最新活动</th>
+          <th>优待/会员制</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for bank in site.data.banks %}
+        <tr>
+          <td class="text-center">
+            <a href="{{ bank.url }}" target="_blank" class="flex-column align-items-center justify-content-center text-decoration-none text-dark hover-bank mx-auto">
+              <img src="/assets/img/bankicons/{{ bank.logo | default: 'default-bank.png' }}" 
+                   alt="{{ bank.name }} Logo" 
+                   class="bank-logo me-2"
+                   style="background-color: {{ bank.logo_bg | default: '#ffffff' }};">
+              <br/>
+              <span class="fw-bold">{{ bank.name }}</span>
+            </a>
+          </td>
+
+          <td>
+            {% if bank.transfer_url %}
+              <a href="{{ bank.transfer_url }}" target="_blank" class="badge badge-transfer text-decoration-none">
+                {{ bank.transfer }} <i class="bi bi-box-arrow-up-right small"></i>
+              </a>
+            {% else %}
+              <span class="badge badge-transfer">{{ bank.transfer }}</span>
+            {% endif %}
+          </td>
+
+          <td>
+            {% if bank.atm_url %}
+              <a href="{{ bank.atm_url }}" target="_blank" class="badge badge-atm text-decoration-none">
+                {{ bank.atm }} <i class="bi bi-box-arrow-up-right small"></i>
+              </a>
+            {% else %}
+              <span class="badge badge-atm">{{ bank.atm }}</span>
+            {% endif %}
+          </td>
+
+          <td class="{% if bank.interest contains '0.1' or bank.interest contains '0.2' %}text-danger fw-bold{% endif %}">
+            {{ bank.interest }}
+          </td>
+
+          <td>
+            {% if bank.promo_url %}
+              <a href="{{ bank.promo_url }}" target="_blank" class="text-decoration-none border-bottom border-danger text-danger small">
+                {{ bank.promo }}
+              </a>
+            {% else %}
+              <span class="text-secondary small">{{ bank.promo }}</span>
+            {% endif %}
+          </td>
+
+          <td>
+            {% if bank.club_url %}
+              <a href="{{ bank.club_url }}" target="_blank" class="text-decoration-none text-primary small">
+                {{ bank.club }} <i class="bi bi-info-circle"></i>
+              </a>
+            {% else %}
+              <span class="text-muted small">{{ bank.club }}</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <p class="text-end text-muted mt-3 small">
+    <i class="bi bi-clock-history"></i> 最后更新：{{ "now" | date: "%Y-%m-%d" }}
+  </p>
+</div>
+
+<style>
+
+/* 表头样式 */
+#bankTable thead th {
+    background-color: #f8f9fa;
+    color: #444;
+    font-weight: 600;
+    padding: 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 2px solid #eee;
+    transition: background 0.2s;
+}
+#bankTable thead th:hover { background-color: #f1f3f5; }
+
+/* Logo 与 银行名称 */
+.bank-logo {
+    max-width: 200px; /* 指定最大宽度 */
+    width: auto;
+    height: auto;
+    display: block;      /* 确保作为块级元素处理 */
+    margin: 0 auto;      /* 强制水平居中 */
+    object-fit: contain;
+    background-color: white;
+    padding: 5px;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+.hover-bank:hover span { color: #0d6efd !important; text-decoration: underline; }
+
+/* 标签样式 (浅色底+深色字) */
+.badge-transfer { 
+    background-color: #e7f1ff; color: #0056b3; 
+    border: 1px solid #b6d4fe; font-weight: 500; padding: 6px 10px;
+}
+.badge-atm { 
+    background-color: #e6fcf5; color: #087f5b; 
+    border: 1px solid #c3fae8; font-weight: 500; padding: 6px 10px;
+}
+.badge:hover { filter: brightness(0.92); transform: translateY(-1px); transition: all 0.2s; }
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    #bankTable th:first-child, #bankTable td:first-child {
+        position: sticky; left: 0; background: #fff; z-index: 5; 
+        box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    }
+}
+</style>
+
+<script>
+// 即时搜索
+document.getElementById('bankSearch').addEventListener('keyup', function() {
+  const value = this.value.toLowerCase();
+  const rows = document.querySelectorAll('#bankTable tbody tr');
+  rows.forEach(row => {
+    row.style.display = row.innerText.toLowerCase().includes(value) ? '' : 'none';
+  });
+});
+
+// 通用排序
+function sortTable(n) {
+  const table = document.getElementById("bankTable");
+  let switching = true, dir = "asc", switchcount = 0;
+  while (switching) {
+    switching = false;
+    const rows = table.rows;
+    for (let i = 1; i < (rows.length - 1); i++) {
+      let shouldSwitch = false;
+      let xContent = rows[i].getElementsByTagName("TD")[n].innerText;
+      let yContent = rows[i + 1].getElementsByTagName("TD")[n].innerText;
+      
+      // 提取数字或利率进行比较
+      let x = parseFloat(xContent.replace(/[^0-9.]/g, '')) || 0;
+      let y = parseFloat(yContent.replace(/[^0-9.]/g, '')) || 0;
+
+      // 如果不是数字，则按文字排序
+      if (isNaN(x) || isNaN(y)) {
+        x = xContent.toLowerCase();
+        y = yContent.toLowerCase();
+      }
+
+      if (dir == "asc") {
+        if (x > y) { shouldSwitch = true; break; }
+      } else if (dir == "desc") {
+        if (x < y) { shouldSwitch = true; break; }
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true; switchcount++;
+    } else if (switchcount == 0 && dir == "asc") {
+      dir = "desc"; switching = true;
+    }
+  }
+}
+</script>
