@@ -2,7 +2,6 @@
 layout: pagecenter
 title: 邀请链接
 permalink: /invitation
-full-width: true
 ---
 
 积分网站邀请
