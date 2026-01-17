@@ -60,7 +60,7 @@ jobs:
       - name: Obfuscate *.html
         # 重点：处理 _site 目录下的文件，因为那是最终部署的内容
         run: |
-          html-minifier-terser \
+          find ./_site -name "*.html" -exec html-minifier-terser \
           --collapse-whitespace \
           --remove-comments \
           --decode-entities \
