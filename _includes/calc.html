@@ -1,0 +1,44 @@
+<style>
+    /* 右上角固定工具栏容器 */
+    .fixed-action-bar {
+        position: fixed;
+        top: 120px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 2000;
+    }
+
+    /* 按钮通用样式 */
+    .action-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        color: white !important;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        opacity: 0.85;
+    }
+
+    .home-btn { background-color: #0d6efd; }
+    .calc-btn { background-color: #198754; } /* 绿色代表计算器/金融 */
+
+    .action-btn:hover {
+        opacity: 1;
+        transform: scale(1.15) rotate(5deg);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+  </style>
+  <div class="fixed-action-bar">
+    <a href="/" class="action-btn home-btn shadow-sm" title="返回首页" target="_blank">
+      <i class="bi bi-house-door-fill"></i>
+    </a>
+    <a href="/calc" class="action-btn calc-btn shadow-sm" title="利息计算器" target="_blank">
+      <i class="bi bi-calculator-fill"></i>
+    </a>
+  </div>

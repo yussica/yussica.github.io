@@ -1,8 +1,20 @@
 ---
-layout: page
+layout: base
 ---
+{% include header.html type="page" %}
 
-{{ content }}
+<div class="{% if page.center-width %} container-md {% else %} container-fluid {% endif %}" role="main">
+  <div class="row">
+    <div class="{% if page.center-width %} col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 {% else %} col {% endif %}">
+      {% if page.before-content %}
+        <div class="before-content">
+          {% for file in page.before-content %}
+            {% include {{ file }} %}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {{ content }}
 
 {% assign posts = paginator.posts | default: site.posts | sort: 'last_modified_at' | reverse %}
 {% assign topposts = site.posts | where:"top",true | sort: 'last_modified_at' | reverse %}
@@ -191,3 +203,17 @@ layout: page
   {% endif %}
 </ul>
 {% endif %}
+
+
+      {% if page.after-content %}
+        <div class="after-content">
+          {% for file in page.after-content %}
+            {% include {{ file }} %}
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% include comments.html %}
+    </div>
+  </div>
+</div>
