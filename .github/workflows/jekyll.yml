@@ -64,9 +64,8 @@ jobs:
           --collapse-whitespace \
           --remove-comments \
           --decode-entities \
-          --minify-css true \
-          --minify-js true \
-          --process-conditional-comments true \
+          --minify-css=true \
+          --minify-js=true \
           -o {} {} \;
       # --- 混淆结束 ---
 
