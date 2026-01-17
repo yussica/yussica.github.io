@@ -136,3 +136,14 @@ footer-link-col: "#404040"
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+
+defaults:
+  - scope:
+      path: ''
+      # type: pages
+    values:
+      layout: "post"
+      categories: ""
+      tags: ""
+      top: false
