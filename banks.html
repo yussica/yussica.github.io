@@ -161,37 +161,32 @@ document.getElementById('bankSearch').addEventListener('keyup', function() {
 // 通用排序
 function sortTable(n) {
   const table = document.getElementById("bankTable");
-  let switching = true, dir = "asc", switchcount = 0;
-  while (switching) {
-    switching = false;
-    const rows = table.rows;
-    for (let i = 1; i < (rows.length - 1); i++) {
-      let shouldSwitch = false;
-      let xContent = rows[i].getElementsByTagName("TD")[n].innerText;
-      let yContent = rows[i + 1].getElementsByTagName("TD")[n].innerText;
-      
-      // 提取数字或利率进行比较
-      let x = parseFloat(xContent.replace(/[^0-9.]/g, '')) || 0;
-      let y = parseFloat(yContent.replace(/[^0-9.]/g, '')) || 0;
+  const tbody = table.tBodies[0];
+  const rows = Array.from(tbody.rows);
+  const th = table.querySelectorAll('th')[n];
+  const isAscending = th.classList.contains('th-sort-asc');
 
-      // 如果不是数字，则按文字排序
-      if (isNaN(x) || isNaN(y)) {
-        x = xContent.toLowerCase();
-        y = yContent.toLowerCase();
-      }
+  // 清除其他列的状态
+  table.querySelectorAll('th').forEach(el => el.classList.remove('th-sort-asc', 'th-sort-desc'));
 
-      if (dir == "asc") {
-        if (x > y) { shouldSwitch = true; break; }
-      } else if (dir == "desc") {
-        if (x < y) { shouldSwitch = true; break; }
-      }
+  const sortedRows = rows.sort((a, b) => {
+    let aColText = a.cells[n].innerText.trim();
+    let bColText = b.cells[n].innerText.trim();
+
+    // 提取数字（包括利率中的小数点）
+    const aVal = parseFloat(aColText.replace(/[^0-9.]/g, '')) || 0;
+    const bVal = parseFloat(bColText.replace(/[^0-9.]/g, '')) || 0;
+
+    // 如果双方都有有效的数字，按数字排；否则按文本排
+    if (!isNaN(aVal) && !isNaN(bVal) && (aVal !== 0 || bVal !== 0)) {
+       return isAscending ? bVal - aVal : aVal - bVal;
     }
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true; switchcount++;
-    } else if (switchcount == 0 && dir == "asc") {
-      dir = "desc"; switching = true;
-    }
-  }
+    return isAscending ? bColText.localeCompare(aColText) : aColText.localeCompare(bColText);
+  });
+
+  // 更新 DOM
+  tbody.append(...sortedRows);
+  th.classList.toggle('th-sort-asc', !isAscending);
+  th.classList.toggle('th-sort-desc', isAscending);
 }
 </script>
