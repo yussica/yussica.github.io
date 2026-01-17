@@ -73,7 +73,12 @@ jobs:
       - name: Obfuscate cal.html
         # 重点：处理 _site 目录下的文件，因为那是最终部署的内容
         run: |
-          html-minifier-terser --collapse-whitespace --remove-comments --minify-js true -o ./_site/calc.html ./_site/calc.html
+          html-minifier-terser \
+          --collapse-whitespace \
+          --remove-comments \
+          --minify-css true \
+          --minify-js true \
+          -o ./_site/calc.html ./_site/calc.html
       # --- 混淆结束 ---
 
       - name: Upload artifact
