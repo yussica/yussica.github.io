@@ -1,6 +1,7 @@
 ---
 layout: page
 title: 日本银行优待对比门户
+share-description: 日本各大主流银行优待制度、手续费及利率一览表
 ---
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
@@ -27,8 +28,8 @@ title: 日本银行优待对比门户
           <th onclick="sortTable(1)">免费转账 <i class="bi bi-arrow-down-up ms-1"></i></th>
           <th onclick="sortTable(2)">ATM <i class="bi bi-arrow-down-up ms-1"></i></th>
           <th onclick="sortTable(3)">活期利率 <i class="bi bi-arrow-down-up ms-1"></i></th>
-          <th>最新活动</th>
-          <th>优待/会员制</th>
+          <th>会员</th>
+          <th>优惠活动</th>
         </tr>
       </thead>
       <tbody>
@@ -65,17 +66,13 @@ title: 日本银行优待对比门户
             {% endif %}
           </td>
 
-          <td class="{% if bank.interest contains '0.1' or bank.interest contains '0.2' %}text-danger fw-bold{% endif %}">
-            {{ bank.interest }}
-          </td>
-
-          <td>
-            {% if bank.promo_url %}
-              <a href="{{ bank.promo_url }}" target="_blank" class="text-decoration-none border-bottom border-danger text-danger small">
-                {{ bank.promo }}
+          <td class="{% if bank.interest contains '0.4' or bank.interest contains '0.5' %}text-danger fw-bold{% endif %}">
+            {% if bank.interest_url %}
+              <a href="{{ bank.interest_url }}" target="_blank" class="text-decoration-none text-reset">
+                {{ bank.interest }} <i class="bi bi-box-arrow-up-right small" style="font-size: 0.7em; opacity: 0.6;"></i>
               </a>
             {% else %}
-              <span class="text-secondary small">{{ bank.promo }}</span>
+              {{ bank.interest }}
             {% endif %}
           </td>
 
@@ -86,6 +83,16 @@ title: 日本银行优待对比门户
               </a>
             {% else %}
               <span class="text-muted small">{{ bank.club }}</span>
+            {% endif %}
+          </td>
+
+          <td>
+            {% if bank.promo_url %}
+              <a href="{{ bank.promo_url }}" target="_blank" class="text-decoration-none border-bottom border-danger text-danger small">
+                {{ bank.promo }}
+              </a>
+            {% else %}
+              <span class="text-secondary small">{{ bank.promo }}</span>
             {% endif %}
           </td>
         </tr>
@@ -115,15 +122,16 @@ title: 日本银行优待对比门户
 
 /* Logo 与 银行名称 */
 .bank-logo {
-    max-width: 200px; /* 指定最大宽度 */
+    max-width: 100px; /* 指定最大宽度 */
     width: auto;
     height: auto;
     display: block;      /* 确保作为块级元素处理 */
     margin: 0 auto;      /* 强制水平居中 */
     object-fit: contain;
     background-color: white;
-    padding: 5px;
-    border-radius: 8px;
+    padding: 1px;
+    border-radius: 32px;
+    border: 1px solid #ccc;
     transition: transform 0.2s;
 }
 .hover-bank:hover span { color: #0d6efd !important; text-decoration: underline; }
@@ -166,25 +174,32 @@ function sortTable(n) {
   const th = table.querySelectorAll('th')[n];
   const isAscending = th.classList.contains('th-sort-asc');
 
-  // 清除其他列的状态
   table.querySelectorAll('th').forEach(el => el.classList.remove('th-sort-asc', 'th-sort-desc'));
 
   const sortedRows = rows.sort((a, b) => {
-    let aColText = a.cells[n].innerText.trim();
-    let bColText = b.cells[n].innerText.trim();
-
-    // 提取数字（包括利率中的小数点）
-    const aVal = parseFloat(aColText.replace(/[^0-9.]/g, '')) || 0;
-    const bVal = parseFloat(bColText.replace(/[^0-9.]/g, '')) || 0;
-
-    // 如果双方都有有效的数字，按数字排；否则按文本排
-    if (!isNaN(aVal) && !isNaN(bVal) && (aVal !== 0 || bVal !== 0)) {
-       return isAscending ? bVal - aVal : aVal - bVal;
+    let aText, bText;
+    
+    // 如果是第一列(银行名)，精准抓取 span 的文字
+    if (n === 0) {
+      aText = a.cells[n].querySelector('span').textContent.trim();
+      bText = b.cells[n].querySelector('span').textContent.trim();
+    } else {
+      aText = a.cells[n].innerText.trim();
+      bText = b.cells[n].innerText.trim();
     }
-    return isAscending ? bColText.localeCompare(aColText) : aColText.localeCompare(bColText);
+
+    // 数值对比 (针对利率和次数)
+    const aVal = parseFloat(aText.replace(/[^0-9.]/g, '')) || 0;
+    const bVal = parseFloat(bText.replace(/[^0-9.]/g, '')) || 0;
+
+    if (!isNaN(aVal) && !isNaN(bVal) && (aVal !== 0 || bVal !== 0)) {
+       return isAscending ? aVal - bVal : bVal - aVal;
+    }
+    
+    // 文本对比 (使用 ja 语言规则以正确处理日文汉字/假名排序)
+    return isAscending ? bText.localeCompare(aText, 'ja') : aText.localeCompare(bText, 'ja');
   });
 
-  // 更新 DOM
   tbody.append(...sortedRows);
   th.classList.toggle('th-sort-asc', !isAscending);
   th.classList.toggle('th-sort-desc', isAscending);
