@@ -2,11 +2,37 @@
 layout: base
 ---
 
-{% include header.html type="post" %}
+<div class="mt-5 pt-5"></div>
+<div class="container pt-4" style="max-width: 900px;">
+  <div class="row justify-content-center">
+    <div class="col-12">
 
-<div class="{% if page.center-width %} container-md {% else %} container-fluid {% endif %}">
-  <div class="row">
-    <div class="{% if page.center-width %} col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 {% else %} col {% endif %}">
+      <style>
+        .blog-post h1, .blog-post h2, .blog-post h3, .blog-post h4 {
+          color: #0066cc;
+          margin-top: 1.5rem;
+          margin-bottom: 1rem;
+        }
+        .blog-post blockquote {
+          background-color: #e6f2ff;
+          border-left: 4px solid #0066cc;
+          padding: 1rem;
+          color: #333;
+          font-size: 0.95rem;
+          border-radius: 4px;
+        }
+      </style>
+
+      <div class="mb-3 text-muted font-weight-bold" style="font-size: 0.9rem;">
+        <a href="{{ '/' | absolute_url }}" class="text-muted">Home</a> 
+        {% if page.category %}
+        / <a href="{{ '/categories/' | append: page.category | absolute_url }}" class="text-muted">{{ page.category }}</a>
+        {% endif %}
+        / {{ page.title }}
+      </div>
+
+      <h1 class="font-weight-bold mb-3" style="color: #0066cc;">{{ page.title }}</h1>
+      <p class="text-muted mb-4">{{ page.date | date: "%B %-d, %Y" }} · {% include readtime.html %}</p>
 
       {% if page.gh-repo %}
         {% assign gh_split =  page.gh-repo | split:'/'  %}
@@ -64,18 +90,18 @@ layout: base
         {% include social-share.html %}
       {% endif %}
 
-      <ul class="pagination blog-pager">
+      <div class="d-flex justify-content-between my-5">
         {% if page.previous.url %}
-        <li class="page-item previous">
-          <a class="page-link" href="{{ page.previous.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; Previous Post</a>
-        </li>
+        <a href="{{ page.previous.url | relative_url }}" class="text-muted font-weight-bold" data-toggle="tooltip" data-placement="top" title="{{page.previous.title}}">&larr; Previous: {{ page.previous.title | truncatewords: 5 }}</a>
+        {% else %}
+        <span></span>
         {% endif %}
         {% if page.next.url %}
-        <li class="page-item next">
-          <a class="page-link" href="{{ page.next.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">Next Post &rarr;</a>
-        </li>
+        <a href="{{ page.next.url | relative_url }}" class="text-muted font-weight-bold" data-toggle="tooltip" data-placement="top" title="{{page.next.title}}">Next: {{ page.next.title | truncatewords: 5 }} &rarr;</a>
+        {% else %}
+        <span></span>
         {% endif %}
-      </ul>
+      </div>
       {% include comments.html %}
     </div>
   </div>

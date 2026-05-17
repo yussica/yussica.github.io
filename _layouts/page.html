@@ -2,12 +2,21 @@
 layout: base
 ---
 
-{% include header.html type="page" %}
+<div class="mt-5 pt-5"></div>
 {% include calc.html %}
 
-<div class="{% if page.center-width %} container-md {% else %} container-fluid {% endif %}" role="main">
-  <div class="row">
-    <div class="{% if page.center-width %} col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 {% else %} col {% endif %}">
+<div class="container pt-4" role="main" style="max-width: 900px;">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <style>
+        .page-content h1, .page-content h2, .page-content h3, .page-content h4 {
+          color: #0066cc;
+          margin-top: 1.5rem;
+          margin-bottom: 1rem;
+        }
+      </style>
+      <h1 class="font-weight-bold mb-5" style="color: #0066cc;">{{ page.title }}</h1>
+      <div class="page-content">
       {% if page.before-content %}
         <div class="before-content">
           {% for file in page.before-content %}
@@ -17,6 +26,7 @@ layout: base
       {% endif %}
 
       {{ content }}
+      </div>
 
       {% if page.after-content %}
         <div class="after-content">
