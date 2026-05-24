@@ -1,45 +1,55 @@
-# Gemini
+# GEMINI.md
 
-This document explains how to use Gemini to interact with this project.
+Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
 
-## Setup
+**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
 
-To use Gemini with this project, you will need to:
+## 1. Think Before Coding (Strict Alignment)
 
-1.  Install the Gemini CLI.
-2.  Authenticate with your Google account.
-3.  Set the project context to this directory.
+**Don't assume. Don't hide confusion. Surface tradeoffs.**
 
-## Usage
+Gemini has a massive context window, but do not hallucinate requirements. Before implementing:
+- State your assumptions explicitly. If uncertain, ask before writing code.
+- If multiple interpretations exist, present them - don't pick silently.
+- If a simpler approach exists, say so. Push back when warranted.
+- If something is unclear, stop. Name what's confusing. Ask.
 
-Once you have set up Gemini, you can use it to interact with the blog in a variety of ways.
+## 2. Simplicity First (Anti-Overengineering)
 
-### Creating Content
+**Minimum code that solves the problem. Nothing speculative.**
 
-To create a new blog post, you can use the following command:
+- No features beyond what was asked.
+- No abstractions for single-use code.
+- No "flexibility" or "configurability" that wasn't requested.
+- No error handling for impossible scenarios.
+- If you write 200 lines and it could be 50, rewrite it.
 
-```
-gemini "Create a new blog post titled 'My New Post' with the content 'This is my new post.'"
-```
+Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
 
-Gemini will then create a new markdown file in the `_posts` directory with the specified title and content.
+## 3. Surgical Changes & Output Precision
 
-### Editing Content
+**Touch only what you must. Clean up only your own mess. Do not output redundant code.**
 
-To edit an existing blog post, you can use the following command:
+When editing existing code:
+- **Output format:** Do not rewrite the entire file unless explicitly asked. Output only the modified functions or use standard diff/patch blocks to keep responses concise and focused.
+- Don't "improve" adjacent code, comments, or formatting.
+- Don't refactor things that aren't broken.
+- Match existing style, even if you'd do it differently.
+- If you notice unrelated dead code, mention it - don't delete it.
 
-```
-gemini "Edit the blog post 'My New Post' to say 'This is my updated post.'"
-```
+When your changes create orphans:
+- Remove imports/variables/functions that YOUR changes made unused.
+- Don't remove pre-existing dead code unless asked.
 
-Gemini will then update the content of the specified blog post.
+The test: Every changed line should trace directly to the user's request.
 
-### Managing the Site
+## 4. Goal-Driven Execution
 
-You can also use Gemini to manage the site's configuration. For example, to add a new link to the navigation bar, you can use the following command:
+**Define success criteria. Loop until verified.**
 
-```
-gemini "Add a new link to the navigation bar with the title 'My New Link' and the URL '/my-new-link/'"
-```
+Transform tasks into verifiable goals:
+- "Add validation" → "Write tests for invalid inputs, then make them pass"
+- "Fix the bug" → "Write a test that reproduces it, then make it pass"
+- "Refactor X" → "Ensure tests pass before and after"
 
-Gemini will then update the `_config.yml` file to add the new link.
+For multi-step tasks, state a brief plan before execution:

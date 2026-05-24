@@ -1,0 +1,47 @@
+name: Generate Post from URL
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL of the event/activity'
+        required: true
+        type: string
+      language:
+        description: 'Language of the post'
+        required: false
+        default: 'zh'
+        type: choice
+        options:
+          - zh
+          - ja
+          - both
+
+jobs:
+  generate_post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: pip install google-genai requests beautifulsoup4
+        
+      - name: Generate post
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python scripts/generate_post_from_url.py "${{ github.event.inputs.url }}" --lang "${{ github.event.inputs.language }}"
+        
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-generated post for new event"
+          file_pattern: "_posts/*.markdown"
